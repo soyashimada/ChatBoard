@@ -10,17 +10,20 @@
             Your Board List
         @endslot
     @endcomponent
-
     
     <div class="container">
-        @foreach ($user->boards as $item)
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title"><a href="{{ route('read',['id' => $item->id]) }}">{{$item->title}}</a></h3>
-                    <h4 class="card-subtitle">{{$item->description}}</h4>
+        @if(!($user->boards->isEmpty()))
+            @foreach ($user->boards as $item)
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="{{ route('read',['id' => $item->id]) }}">{{$item->title}}</a></h3>
+                        <h4 class="card-subtitle">{{$item->description}}</h4>
+                    </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        @else
+            <p>ボードが見つかりませんでした</p>
+        @endif
     </div>
 
     

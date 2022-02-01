@@ -69,6 +69,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/profile/{{Auth::user()->id}}">
+                                        Profile
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -101,5 +104,7 @@
         </div>
     </div>
 
+    <!-- Vueコンポーネントの読み込み -->
+     <script src="{{ mix('js/app.js') }}" defer></script>
 </body>
 </html>

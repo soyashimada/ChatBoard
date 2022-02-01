@@ -1,22 +1,31 @@
 <template>
     <div class="container" >
         <div v-for="(item, post) in posts" :key="post">
+            
             <div class="d-flex justify-content-end" v-if="user.id == item.user.id">
                 <div class="card mb-3 w-50">
                     <div class="card-body">
                         <h3 class="card-title" style="font-size: 22px;">{{item.message}}</h3>
-                        <h4 class="card-subtitle text-muted" style="font-size: 16px;">{{item.user.name}}</h4>
+                        <h5 class="card-subtitle text-muted" style="font-size: 16px;">{{item.user.name}}</h5>
                     </div>
                 </div>
             </div>
             <div class="d-flex" v-else>
                 <div class="card mb-3 w-50">
-                    <div class="card-body">
-                        <h3 class="card-title" style="font-size: 22px;">{{item.message}}</h3>
-                        <h4 class="card-subtitle text-muted" style="font-size: 16px;">{{item.user.name}}</h4>
+                    <div class="row">
+                        <div class="col-4">
+                            <img class="w-100" :src="item.user.user_image" alt="user_image">
+                            <h5 class="text-muted" style="font-size: 16px;"><a :href="'/profile/' + item.user.id">{{item.user.name}}</a></h5>
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body">
+                                <h3 class="card-title" style="font-size: 22px;">{{item.message}}</h3>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="container pb-4">            
             <div class="form-floating">

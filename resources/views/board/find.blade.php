@@ -11,6 +11,14 @@
         @endslot
     @endcomponent
 
+    @if( count($errors) )
+    <ul>
+        @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+    @endif
+
     <div class="container mb-4">
         <form action="/board/find" method="post">
             @csrf
@@ -22,19 +30,23 @@
         </form>
     </div>
 
-    @if (isset($items))
-    <div class="container">
-        @foreach ($items as $item)
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title"><a href="{{ route('read',['id' => $item->id]) }}">{{$item->title}}<a></h3>
-                <h4 class="card-subtitle">user - {{$item->user->name}}</h4>
-                <p class="card-text">{{$item->description}}</p>
-            </div>
+    @if(isset($items))
+        <div class="container">
+            @if (!($items->isEmpty()))
+                @foreach ($items as $item)
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="{{ route('read',['id' => $item->id]) }}">{{$item->title}}<a></h3>
+                        <h4 class="card-subtitle">user - {{$item->user->name}}</h4>
+                        <p class="card-text">{{$item->description}}</p>
+                    </div>
+                </div>
+                @endforeach
+                {{ $items->links() }}
+            @elseif (isset($click))
+                <p>ボードがありませんでした。</p>
+            @endif
         </div>
-        @endforeach
-        {{ $items->links() }}
-    </div>
     @endif
 
     

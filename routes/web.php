@@ -32,9 +32,9 @@ Route::post('board/create', 'BoardController@create');
 Route::get('board/find', 'BoardController@search')->name('find');
 Route::post('board/find', 'BoardController@find');
 
-Route::get('profile', 'UserProfileController@index');
+Route::get('profile/{id}', 'UserProfileController@index')->name('profile');
 
-Route::get('settings/profile', 'UserProfileController@select_setting_profile');
+Route::get('settings/profile', 'UserProfileController@select_setting_profile')->name('setting_profile_top');
 
 Route::get('settings/profile/{pass}', 'UserProfileController@setting_profile')->name('setting_profile');
 Route::post('settings/profile/{pass}','UserProfileController@store');

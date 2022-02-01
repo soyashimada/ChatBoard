@@ -21,7 +21,7 @@
 
     <form action="/settings/profile/userLink" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="url" name="_user_link" id="url" placeholder="https://example.com" pattern="https://.*" size="30" required>
+        <input type="url" name="user_link" id="url" placeholder="https://example.com" pattern="https://.*" size="30" required>
         <input class="form-control" type="submit" value="送信">
     </form>
 

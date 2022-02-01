@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class UserProfileController extends Controller
 {
-    public function index(){
-        $user = Auth::user();
-        return view('userPage', ['user' => $user]);
+    public function index($id){
+        $profiledUser = User::find($id);
+        return view('userPage', ['profiledUser' => $profiledUser]);
     }
 
     public function select_setting_profile(){
@@ -33,20 +33,30 @@ class UserProfileController extends Controller
     }
 
     public function store(Request $request,$pass){
+        //初期画像のパス
+        static $defaultImagePass = "/storage/img/defaultImage.png";
+
+        //validatoin
         $validationData = $request->validate([
-            'name' => 'required_with:name',
-            'status_message' => 'required_with:status_message',
+            'name' => 'required_with:name|max:10|string',
+            'status_message' => 'required_with:status_message|max:100|string',
             'user_image' => 'required_with:user_image|image|dimensions:ratio=1/1',
-            'user_link' => 'required_with:user_link'
+            'user_link' => 'required_with:user_link|string'
         ]);
+
+        //ログインユーザー
         $user = Auth::user();
 
         //画像があればストレージへ保存
-        //01-16 本当は既にある画像はストレージから削除したい
         if($pass == "userImage"){
+            //既に保存されている画像があれば削除
+            if($user->user_image != $defaultImagePass){
+                \Storage::delete($user->user_image);
+            }
+            //画像の登録
             $form = $request->all();
             $image = $request->user_image;
-            $form['user_image'] = $image->store('public/img/'.$user->id);
+            $form['user_image'] =  \Storage::url($image->store('public/img/'.$user->id));
 
             $user->fill($form)->save();
         }else{
@@ -54,6 +64,6 @@ class UserProfileController extends Controller
             $user->fill($form)->save();
         }
 
-        return;
+        return redirect(route('profile',['id' => $user->id]));
     }
 }

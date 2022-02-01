@@ -18,6 +18,11 @@ class PostController extends Controller
 
     //チャット投稿 
     public function post(Request $request) {
+        //validation
+        $validationdata = $request->validate([
+            'message' => 'required|max:100|string'
+        ]);
+
         $user = Auth::user();
         $board = Board::find($request->id);
         $post = new Post;

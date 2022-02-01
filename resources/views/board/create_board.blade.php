@@ -11,6 +11,14 @@
         @endslot
     @endcomponent
 
+    @if( count($errors) )
+    <ul>
+        @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+    @endif
+
     <div class="container">
         <form action="/board/create" method="post">
             @csrf

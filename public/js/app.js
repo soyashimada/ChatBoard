@@ -1899,6 +1899,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "real-time-chat",
   props: ["id"],
@@ -43805,7 +43814,7 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _c(
-                      "h4",
+                      "h5",
                       {
                         staticClass: "card-subtitle text-muted",
                         staticStyle: { "font-size": "16px" }
@@ -43817,24 +43826,41 @@ var render = function() {
               ])
             : _c("div", { staticClass: "d-flex" }, [
                 _c("div", { staticClass: "card mb-3 w-50" }, [
-                  _c("div", { staticClass: "card-body" }, [
-                    _c(
-                      "h3",
-                      {
-                        staticClass: "card-title",
-                        staticStyle: { "font-size": "22px" }
-                      },
-                      [_vm._v(_vm._s(item.message))]
-                    ),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-4" }, [
+                      _c("img", {
+                        staticClass: "w-100",
+                        attrs: { src: item.user.user_image, alt: "user_image" }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "h5",
+                        {
+                          staticClass: "text-muted",
+                          staticStyle: { "font-size": "16px" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            { attrs: { href: "/profile/" + item.user.id } },
+                            [_vm._v(_vm._s(item.user.name))]
+                          )
+                        ]
+                      )
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "h4",
-                      {
-                        staticClass: "card-subtitle text-muted",
-                        staticStyle: { "font-size": "16px" }
-                      },
-                      [_vm._v(_vm._s(item.user.name))]
-                    )
+                    _c("div", { staticClass: "col-8" }, [
+                      _c("div", { staticClass: "card-body" }, [
+                        _c(
+                          "h3",
+                          {
+                            staticClass: "card-title",
+                            staticStyle: { "font-size": "22px" }
+                          },
+                          [_vm._v(_vm._s(item.message))]
+                        )
+                      ])
+                    ])
                   ])
                 ])
               ])

@@ -18,6 +18,12 @@ class BoardController extends Controller
     }
 
     public function create(Request $request) {
+        //validation
+        $validationdata = $request->validate([
+            'title' => 'required|max:20|string',
+            'description' => 'required|max:100|string'
+        ]);
+
         $board = new Board;
         $user = Auth::user();
         $form = $request->all();
@@ -33,9 +39,14 @@ class BoardController extends Controller
     }
 
     public function find(Request $request) {
+        //validation
+        $validationdata = $request->validate([
+            'input' => 'required|max:20|string',
+        ]);
+
         $data = Board::where('title','like','%'.$request->input.'%');
         $items = $data->simplePaginate(10);
 
-        return view('board.find', ['items' => $items, 'input' => $request->input]);
+        return view('board/find', ['items' => $items, 'input' => $request->input, 'click' => true]);
     }
 }

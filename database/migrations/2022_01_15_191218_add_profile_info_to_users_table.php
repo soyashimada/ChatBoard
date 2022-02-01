@@ -14,7 +14,8 @@ class AddProfileInfoToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('user_image')->default("");
+            static $defaultImagePass = "/storage/img/defaultImage.png";
+            $table->string('user_image')->default($defaultImagePass);
             $table->string('status_message')->default("");
             $table->string('user_link')->default("");
         });
@@ -27,8 +28,15 @@ class AddProfileInfoToUsersTable extends Migration
      */
     public function down()
     {
+        //全てのユーザー画像を削除
+        $directories = \Storage::allDirectories("public/img");
+        foreach($directories as $directory){
+            \Storage::deleteDirectory($directory);
+        }
+        
+        //プロフィール画像、コメント、ユーザーリンクのカラムを削除
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn(['user_image','status_message','user_link']);
         });
     }
 }
