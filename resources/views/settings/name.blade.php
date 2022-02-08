@@ -19,11 +19,15 @@
     </ul>
     @endif
 
-    <form action="/settings/profile/name" method="POST" enctype="multipart/form-data">
-        @csrf
-        <input class="form-control" type="text" name="name" placeholder="名前">
-        <input class="form-control" type="submit" value="送信">
-    </form>
-
+    <div class="container mb-4">
+        <form action="/settings/profile/name" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="mb-3">
+                <label for="inputName" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" id="inputName" >
+            </div>
+            <button type="submit" class="btn btn-primary">send</button>
+        </form>
+    </div>
     
 @endsection

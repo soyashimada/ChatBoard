@@ -19,11 +19,15 @@
     </ul>
     @endif
 
-    <form action="/settings/profile/statusMessage" method="POST" enctype="multipart/form-data">
-        @csrf
-        <textarea class="form-control" name="status_message" rows="4" placeholder="コメント"></textarea>
-        <input class="form-control" type="submit" value="送信">
-    </form>
-
+    <div class="container mb-4">
+        <form action="/settings/profile/statusMessage" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="mb-3">
+                <label for="inputStatusMessage" class="form-label">Status Message</label>
+                <textarea class="form-control" name="status_message" rows="4" id="inputStatusMessage"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">send</button>
+        </form>
+    </div>
     
 @endsection

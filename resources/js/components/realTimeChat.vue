@@ -6,21 +6,19 @@
                 <div class="card mb-3 w-50">
                     <div class="card-body">
                         <h3 class="card-title" style="font-size: 22px;">{{item.message}}</h3>
-                        <h5 class="card-subtitle text-muted" style="font-size: 16px;">{{item.user.name}}</h5>
                     </div>
                 </div>
             </div>
-            <div class="d-flex" v-else>
-                <div class="card mb-3 w-50">
-                    <div class="row">
-                        <div class="col-4">
-                            <img class="w-100" :src="item.user.user_image" alt="user_image">
-                            <h5 class="text-muted" style="font-size: 16px;"><a :href="'/profile/' + item.user.id">{{item.user.name}}</a></h5>
-                        </div>
-                        <div class="col-8">
-                            <div class="card-body">
-                                <h3 class="card-title" style="font-size: 22px;">{{item.message}}</h3>
-                            </div>
+
+            <div v-else>
+                <div class="col-lg-1 col-2">
+                    <a :href="'/profile/' + item.user.id"><img class="w-100" :src="item.user.user_image" alt="user_image" style="border-radius: 50%"></a>
+                    <h5 class="text-muted text-center" style="font-size: 15px;">{{item.user.name}}</h5>
+                </div>
+                <div class="d-flex">                   
+                    <div class="card mb-3 w-50">                       
+                        <div class="card-body">
+                            <h3 class="card-title" style="font-size: 22px;">{{item.message}}</h3>
                         </div>
                     </div>
                 </div>

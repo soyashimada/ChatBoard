@@ -19,11 +19,16 @@
     </ul>
     @endif
 
-    <form action="/settings/profile/userLink" method="POST" enctype="multipart/form-data">
-        @csrf
-        <input type="url" name="user_link" id="url" placeholder="https://example.com" pattern="https://.*" size="30" required>
-        <input class="form-control" type="submit" value="送信">
-    </form>
+    <div class="container mb-4">
+        <form action="/settings/profile/userLink" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="mb-3">
+                <label for="inputUserLink" class="form-label">User Link</label>
+                <input class="form-control" type="url" name="user_link" id="inputUserLink" placeholder="https://example.com" pattern="https://.*" size="30" required>
+            </div>
+            <button type="submit" class="btn btn-primary">send</button>
+        </form>
+    </div>
 
     
 @endsection

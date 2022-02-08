@@ -21,6 +21,7 @@
 
     <!-- CSS参照 -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -99,7 +100,7 @@
     <div class="footer fixed-bottom">
         <div class="container-fluid border-top bg-dark" style="height: 40px">
             <div class="footer-content mr-4 mt-1">
-                <p class="d-flex justify-content-end" style="color: white">soya shimada</p>
+                <p class="d-flex justify-content-end" style="color: white">copyright 2022 soya.</p>
             </div>
         </div>
     </div>
