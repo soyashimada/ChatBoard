@@ -1936,6 +1936,8 @@ __webpack_require__.r(__webpack_exports__);
       axios.get(url).then(function (response) {
         _this2.posts = response.data.posts;
         _this2.user = response.data.user;
+      })["catch"](function (err) {
+        return console.error(err);
       });
     },
     postMessage: function postMessage() {
@@ -1947,6 +1949,8 @@ __webpack_require__.r(__webpack_exports__);
         id: this.boardid
       }).then(function (response) {
         _this3.text = "";
+      })["catch"](function (err) {
+        return console.error(err);
       });
     }
   }
