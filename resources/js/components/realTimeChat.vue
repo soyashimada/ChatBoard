@@ -62,13 +62,13 @@
                 axios.get(url).then(response => {
                     this.posts = response.data.posts;
                     this.user = response.data.user;
-                })
+                }).catch(err => console.error(err))
             },
             postMessage() {
                 const url = '/ajax/board/read?id='+ this.boardid;
                 axios.post(url, {message: this.text, id: this.boardid}).then(response => {
                     this.text = "";
-                })
+                }).catch(err => console.error(err))
 
             }
         }
