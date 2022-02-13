@@ -1936,8 +1936,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.get(url).then(function (response) {
         _this2.posts = response.data.posts;
         _this2.user = response.data.user;
-      })["catch"](function (err) {
-        return console.error(err);
       });
     },
     postMessage: function postMessage() {
@@ -1949,8 +1947,6 @@ __webpack_require__.r(__webpack_exports__);
         id: this.boardid
       }).then(function (response) {
         _this3.text = "";
-      })["catch"](function (err) {
-        return console.error(err);
       });
     }
   }
@@ -2037,8 +2033,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "54532862c1f06cc0558d",
-  cluster: "ap3",
+  key: "c6bb4d442af2cec7024e",
+  cluster: "mt1",
   forceTLS: true
 });
 
