@@ -12,15 +12,16 @@
     @endcomponent
     
     <div class="container">
-        @if(!($user->boards->isEmpty()))
-            @foreach ($user->boards as $item)
+        @if(!($boards->isEmpty()))
+            @foreach ($boards as $board)
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title"><a href="{{ route('read',['id' => $item->id]) }}">{{$item->title}}</a></h3>
-                        <h4 class="card-subtitle">{{$item->description}}</h4>
+                        <h3 class="card-title"><a href="{{ route('read',['id' => $board->id]) }}">{{$board->title}}</a></h3>
+                        <h4 class="card-subtitle">{{$board->description}}</h4>
                     </div>
                 </div>
             @endforeach
+            {{ $boards->links('pagination::bootstrap-4') }}
         @else
             <p>ボードが見つかりませんでした</p>
         @endif

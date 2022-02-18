@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function read(Request $request) {
-        $items = Post::where('board_id',$request->id)->orderby('created_at', 'asc')->get();
-        $board = Board::find($request->id);
+    public function read($id) {
+        $items = Post::where('board_id',$id)->orderby('created_at', 'asc')->get();
+        $board = Board::find($id);
         return view('board.read', ['items' => $items, 'board' => $board]);
     }
 

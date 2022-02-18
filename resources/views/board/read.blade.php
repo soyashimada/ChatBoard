@@ -23,4 +23,6 @@
     </ul>
     @endif
 
+    <!-- Vueコンポーネントの読み込み -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
 @endsection

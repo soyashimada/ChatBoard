@@ -20,8 +20,8 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('board', 'BoardController@index')->name('board');
 
-Route::get('board/read', 'PostController@read')->name('read');
-Route::post('board/read','PostController@post');
+Route::get('board/read/{id}', 'PostController@read')->name('read');
+Route::post('board/read/{id}','PostController@post');
 
 Route::get('ajax/board/read', 'PostController@get_posts');
 Route::post('ajax/board/read', 'PostController@post');
@@ -29,8 +29,7 @@ Route::post('ajax/board/read', 'PostController@post');
 Route::get('board/create', 'BoardController@add')->name('create_board');
 Route::post('board/create', 'BoardController@create');
 
-Route::get('board/find', 'BoardController@search')->name('find');
-Route::post('board/find', 'BoardController@find');
+Route::get('board/search', 'BoardController@search')->name('search');
 
 Route::get('profile/{id}', 'UserProfileController@index')->name('profile');
 

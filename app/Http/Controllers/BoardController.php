@@ -10,13 +10,15 @@ class BoardController extends Controller
 {
     public function index(){
         $user = Auth::user();
-        return view('board.list', ['user' => $user]);
+        $boards = Board::where('user_id',$user->id)->orderby('created_at','desc')->paginate(15);
+        return view('board.list', ['boards' => $boards]);
     }
 
     public function add() {
         return view('board.create_board');
     }
 
+    //ボード作成関数
     public function create(Request $request) {
         //validation
         $validationdata = $request->validate([
@@ -34,19 +36,20 @@ class BoardController extends Controller
         return redirect('/');
     }
 
-    public function search() {
-        return view('board.find',['input' => ""]);
-    }
+    //ボード検索関数
+    public function search(Request $request) {
+        if(isset($request->input)){
+            //validation
+            $validationdata = $request->validate([
+                'input' => 'required|max:20|string',
+            ]);
 
-    public function find(Request $request) {
-        //validation
-        $validationdata = $request->validate([
-            'input' => 'required|max:20|string',
-        ]);
+            $boards = Board::where('title','like','%'.$request->input.'%')->paginate(15);
+            $boards->withQueryString();
 
-        $data = Board::where('title','like','%'.$request->input.'%');
-        $items = $data->simplePaginate(10);
-
-        return view('board/find', ['items' => $items, 'input' => $request->input, 'click' => true]);
+            return view('board.search',['boards' => $boards, 'input' => $request->input]);
+        }
+        
+        return view('board.search');
     }
 }

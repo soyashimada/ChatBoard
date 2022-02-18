@@ -24,7 +24,7 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <a href="{{ route('find') }}" class="card-title" style="font-size: 20px">チャットボードを探す</a>
+                <a href="{{ route('search') }}" class="card-title" style="font-size: 20px">チャットボードを探す</a>
             </div>
         </div>
     </div>
