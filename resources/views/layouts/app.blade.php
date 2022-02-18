@@ -70,8 +70,14 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('board') }}">
+                                        自分のボード
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('create_board') }}">
+                                        ボード作成
+                                    </a>
                                     <a class="dropdown-item" href="/profile/{{Auth::user()->id}}">
-                                        Profile
+                                        マイページ
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -104,6 +110,7 @@
             </div>
         </div>
     </div>
-
+    <!-- Vueコンポーネントの読み込み -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
 </body>
 </html>
