@@ -1,3 +1,15 @@
+# ChatBoard
+現在、スキル研鑽のため開発中のチャットアプリです。Herokuで公開中です。  
+https://chat-board-0023.herokuapp.com/
+
+アカウント登録を飛ばしたければ、下記の入力でログインしてください。
+
+メールアドレス：test@mail  
+パスワード：password
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
