@@ -34,7 +34,7 @@ class UserProfileController extends Controller
 
     public function store(Request $request,$pass){
         //初期画像のパス
-        static $defaultImagePass = "/storage/img/defaultImage.png";
+        $defaultImagePass = \Storage::disk('public\img')->file('defaultImage.png')->url();
 
         //validatoin
         $validationData = $request->validate([

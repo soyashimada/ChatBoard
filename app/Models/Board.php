@@ -7,13 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Board extends Model
 {
+    use HasFactory;
+
     protected $guarded = array('id');
 
     public function user(){
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     public function posts(){
-        return $this->hasMany('App\Models\Post');
+        return $this->hasMany(Post::class);
     }
 }

@@ -24,9 +24,9 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'board_id' => Board::Factory(),
-            'user_id' => User::Factory(),
-            'message' => realText(100),
+            'board_id' => Board::factory(),
+            'user_id' => User::factory(),
+            'message' => $this->faker->realText(100),
         ];
     }
 }

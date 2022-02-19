@@ -7,13 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    use HasFactory;
+
     protected $guarded = array('id');
 
     public function user() {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     public function board() {
-        return $this->belongsTo('App\Models\Board');
+        return $this->belongsTo(Board::class);
     }
 }
