@@ -11,15 +11,16 @@
         @endslot
     @endcomponent
 
-    @if( count($errors) )
-    <ul>
-        @foreach($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-    @endif
+    
 
     <div class="container mb-4">
+        @if( count($errors) )
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        @endif
         <form action="/settings/profile/userImage" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">

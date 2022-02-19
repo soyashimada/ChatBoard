@@ -14,7 +14,7 @@ class AddProfileInfoToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            static $defaultImagePass = "/storage/img/defaultImage.png";
+            $defaultImagePass = \Storage::url('img/defaultImage.png');
             $table->string('user_image')->default($defaultImagePass);
             $table->string('status_message')->default("");
             $table->string('user_link')->default("");

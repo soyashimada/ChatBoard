@@ -34,7 +34,7 @@ class UserProfileController extends Controller
 
     public function store(Request $request,$pass){
         //初期画像のパス
-        $defaultImagePass = \Storage::disk('public\img')->file('defaultImage.png')->url();
+        $defaultImagePass = \Storage::url('img/defaultImage.png');
 
         //validatoin
         $validationData = $request->validate([
@@ -51,7 +51,7 @@ class UserProfileController extends Controller
         if($pass == "userImage"){
             //既に保存されている画像があれば削除
             if($user->user_image != $defaultImagePass){
-                \Storage::delete($user->user_image);
+                \Storage::delete(\Storage::files('public/img/'.$user->id));
             }
             //画像の登録
             $form = $request->all();
