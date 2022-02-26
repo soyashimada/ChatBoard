@@ -11,7 +11,7 @@
         @endslot
     @endcomponent
 
-    <div class="container">
+    <div class="container profile-container">
         <div class="card">
             <div class="row justify-content-center g-0">
                 <div class="col-4">
@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-sm-8 user_profile">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $profiledUser->name }}</h5>
+                        <h5 class="card-title profile-name">{{ $profiledUser->name }}</h5>
                         <a class="card-text" href="{{ $profiledUser->user_link }}"><small class="text-muted">{{ $profiledUser->user_link }}</small></a>
                         <p class="card-text">{{ $profiledUser->status_message }}</p>
                     </div>

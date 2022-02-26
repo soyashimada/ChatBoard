@@ -1,4 +1,32 @@
-@media (max-width: 568px){
+html {
+    font-size: 16px;
+}
+
+/* top page */
+
+.recently-boards{
+    width: 90%;
+    margin: 0 auto;
+}
+
+@media (max-width: 575px){
+    .recently-boards{
+        width: 100%;
+    }
+}
+
+/* user profile page */
+.profile-name{
+    font-size: 3rem;
+}
+
+@media (max-width: 991px){
+    .profile-name{
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 575px){
     .user_profile{
         text-align: center;
     }
