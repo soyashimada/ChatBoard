@@ -8,12 +8,17 @@
    
     <div class="container mb-5 text-center">
         <div class="jumbotron">
-            <h1 class="display-4">こんにちわ！ {{ Auth::user()->name }}さん！</h1>
+            @auth
+            <h1 class="display-4">ようこそ！ {{ Auth::user()->name }}さん！</h1>
+            @endauth
+            @guest
+            <h1 class="display-4">ようこそ！ゲストさん！</h1>
+            @endguest
             <p class="lead">ChatBoardはシンプルなリアルタイムチャットサイト</p>
             <hr class="my-4">
             <p>チャットボードを作りますか？探しますか？</p>
             <a href="{{ route('create_board') }}" class="btn btn-primary mb-1">チャットボードを作る</a>
-            <a href="{{ route('search') }}" class="btn btn-primary">チャットボードを探す</a>
+            <a href="{{ route('search') }}" class="btn btn-primary mb-1">チャットボードを探す</a>
         </div>
     </div>
     
