@@ -8,9 +8,8 @@ use Illuminate\Http\Request;
 
 class UserProfileController extends Controller
 {
-    public function index($id){
-        $profiledUser = User::find($id);
-        return view('userPage', ['profiledUser' => $profiledUser]);
+    public function index(User $user){
+        return view('userPage', ['profiledUser' => $user]);
     }
 
     public function select_setting_profile(){

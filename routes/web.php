@@ -31,7 +31,7 @@ Route::post('board/create', 'BoardController@create');
 
 Route::get('board/search', 'BoardController@search')->name('search');
 
-Route::get('profile/{id}', 'UserProfileController@index')->name('profile');
+Route::get('profile/{user}', 'UserProfileController@index')->name('profile');
 
 Route::get('settings/profile', 'UserProfileController@select_setting_profile')->name('setting_profile_top');
 
