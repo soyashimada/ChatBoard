@@ -6,6 +6,7 @@
                 <div class="card mb-3 w-50">
                     <div class="card-body">
                         <h3 class="card-title" style="font-size: 22px;">{{item.message}}</h3>
+                        <h5 class="text-muted" style="font-size: 11px;">{{ format(Date.parse(item.created_at), 'yyyy-MM-dd HH:mm', {locale: jaLocale}) }}</h5>
                     </div>
                 </div>
             </div>
@@ -19,6 +20,7 @@
                     <div class="card mb-3 w-50">                       
                         <div class="card-body">
                             <h3 class="card-title" style="font-size: 22px;">{{item.message}}</h3>
+                            <h5 class="text-muted" style="font-size: 11px;">{{ format(Date.parse(item.created_at), 'yyyy-MM-dd HH:mm', {locale: jaLocale}) }}</h5>
                         </div>
                     </div>
                 </div>
@@ -34,12 +36,17 @@
     </div>
 </template>
 
-<script>  
+<script>
+    import format from 'date-fns/format'
+    import jaLocale from 'date-fns/locale/ja'
+
     export default {
         name: "real-time-chat",
         props: ["id"],
         data() {
             return {
+                format,
+                jaLocale,
                 posts: [],
                 user: [],
                 boardid: this.id,

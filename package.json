@@ -27,5 +27,8 @@
         "vue-loader": "^15.9.8",
         "vue-template-compiler": "^2.6.12",
         "webpack": "^5.68.0"
+    },
+    "dependencies": {
+        "date-fns": "^2.28.0"
     }
 }
