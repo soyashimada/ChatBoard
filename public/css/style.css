@@ -31,3 +31,14 @@ html {
         text-align: center;
     }
 }
+
+/* chat page */
+
+.post-content{
+    font-size: 1.4rem;
+}
+
+.post-time{
+    font-size: 0.8rem;
+    margin-bottom: 0px;
+}

@@ -1908,8 +1908,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -47330,38 +47328,26 @@ var render = function() {
           _vm.user.id == item.user.id
             ? _c("div", { staticClass: "d-flex justify-content-end" }, [
                 _c("div", { staticClass: "card mb-3 w-50" }, [
-                  _c("div", { staticClass: "card-body" }, [
-                    _c(
-                      "h3",
-                      {
-                        staticClass: "card-title",
-                        staticStyle: { "font-size": "22px" }
-                      },
-                      [_vm._v(_vm._s(item.message))]
-                    ),
+                  _c("div", { staticClass: "card-body post-body" }, [
+                    _c("p", { staticClass: "card-title post-content" }, [
+                      _vm._v(_vm._s(item.message))
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "h5",
-                      {
-                        staticClass: "text-muted",
-                        staticStyle: { "font-size": "11px" }
-                      },
-                      [
-                        _vm._v(
-                          _vm._s(
-                            _vm.format(
-                              Date.parse(item.created_at),
-                              "yyyy-MM-dd HH:mm",
-                              { locale: _vm.jaLocale }
-                            )
+                    _c("p", { staticClass: "text-muted post-time" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.format(
+                            Date.parse(item.created_at),
+                            "yyyy-MM-dd HH:mm",
+                            { locale: _vm.jaLocale }
                           )
                         )
-                      ]
-                    )
+                      )
+                    ])
                   ])
                 ])
               ])
-            : _c("div", [
+            : _c("div", { staticClass: "d-flex" }, [
                 _c("div", { staticClass: "col-lg-1 col-2" }, [
                   _c("a", { attrs: { href: "/profile/" + item.user.id } }, [
                     _c("img", {
@@ -47381,35 +47367,21 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "d-flex" }, [
-                  _c("div", { staticClass: "card mb-3 w-50" }, [
-                    _c("div", { staticClass: "card-body" }, [
-                      _c(
-                        "h3",
-                        {
-                          staticClass: "card-title",
-                          staticStyle: { "font-size": "22px" }
-                        },
-                        [_vm._v(_vm._s(item.message))]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "h5",
-                        {
-                          staticClass: "text-muted",
-                          staticStyle: { "font-size": "11px" }
-                        },
-                        [
-                          _vm._v(
-                            _vm._s(
-                              _vm.format(
-                                Date.parse(item.created_at),
-                                "yyyy-MM-dd HH:mm",
-                                { locale: _vm.jaLocale }
-                              )
-                            )
+                _c("div", { staticClass: "card mb-3 w-50" }, [
+                  _c("div", { staticClass: "card-body post-body" }, [
+                    _c("p", { staticClass: "card-title post-content" }, [
+                      _vm._v(_vm._s(item.message))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-muted post-time" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.format(
+                            Date.parse(item.created_at),
+                            "yyyy-MM-dd HH:mm",
+                            { locale: _vm.jaLocale }
                           )
-                        ]
+                        )
                       )
                     ])
                   ])

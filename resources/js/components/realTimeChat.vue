@@ -4,24 +4,22 @@
             
             <div class="d-flex justify-content-end" v-if="user.id == item.user.id">
                 <div class="card mb-3 w-50">
-                    <div class="card-body">
-                        <h3 class="card-title" style="font-size: 22px;">{{item.message}}</h3>
-                        <h5 class="text-muted" style="font-size: 11px;">{{ format(Date.parse(item.created_at), 'yyyy-MM-dd HH:mm', {locale: jaLocale}) }}</h5>
+                    <div class="card-body post-body">
+                        <p class="card-title post-content">{{item.message}}</p>
+                        <p class="text-muted post-time">{{ format(Date.parse(item.created_at), 'yyyy-MM-dd HH:mm', {locale: jaLocale}) }}</p>
                     </div>
                 </div>
             </div>
 
-            <div v-else>
+            <div class="d-flex" v-else>
                 <div class="col-lg-1 col-2">
                     <a :href="'/profile/' + item.user.id"><img class="w-100" :src="item.user.user_image" alt="user_image" style="border-radius: 50%"></a>
                     <h5 class="text-muted text-center" style="font-size: 15px;">{{item.user.name}}</h5>
-                </div>
-                <div class="d-flex">                   
-                    <div class="card mb-3 w-50">                       
-                        <div class="card-body">
-                            <h3 class="card-title" style="font-size: 22px;">{{item.message}}</h3>
-                            <h5 class="text-muted" style="font-size: 11px;">{{ format(Date.parse(item.created_at), 'yyyy-MM-dd HH:mm', {locale: jaLocale}) }}</h5>
-                        </div>
+                </div>                 
+                <div class="card mb-3 w-50">                       
+                    <div class="card-body post-body">
+                        <p class="card-title post-content">{{item.message}}</p>
+                        <p class="text-muted post-time">{{ format(Date.parse(item.created_at), 'yyyy-MM-dd HH:mm', {locale: jaLocale}) }}</p>
                     </div>
                 </div>
             </div>
