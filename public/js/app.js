@@ -1923,36 +1923,47 @@ __webpack_require__.r(__webpack_exports__);
       text: ""
     };
   },
+  created: function created() {
+    this.fetchMessages();
+  },
   mounted: function mounted() {
     var _this = this;
 
-    this.fetchMessages();
-    console.log("fetched!");
     Echo.channel('channel').listen('PostSent', function (e) {
       _this.fetchMessages();
-
-      console.log("fetched!");
     });
   },
+  updated: function updated() {
+    this.scrollToEnd();
+  },
   methods: {
-    fetchMessages: function fetchMessages() {
+    scrollToEnd: function scrollToEnd() {
       var _this2 = this;
+
+      this.$nextTick(function () {
+        var chatLog = _this2.$refs.chatWindow;
+        if (!chatLog) return;
+        chatLog.scrollTop = chatLog.scrollHeight;
+      });
+    },
+    fetchMessages: function fetchMessages() {
+      var _this3 = this;
 
       var url = '/ajax/board/read?id=' + this.boardid;
       axios.get(url).then(function (response) {
-        _this2.posts = response.data.posts;
-        _this2.user = response.data.user;
+        _this3.posts = response.data.posts;
+        _this3.user = response.data.user;
       });
     },
     postMessage: function postMessage() {
-      var _this3 = this;
+      var _this4 = this;
 
       var url = '/ajax/board/read?id=' + this.boardid;
       axios.post(url, {
         message: this.text,
         id: this.boardid
       }).then(function (response) {
-        _this3.text = "";
+        _this4.text = "";
       });
     }
   }
@@ -47319,10 +47330,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
+  return _c("div", { staticClass: "app-content" }, [
+    _c(
+      "div",
+      { ref: "chatWindow", staticClass: "chat-window" },
       _vm._l(_vm.posts, function(item, post) {
         return _c("div", { key: post }, [
           _vm.user.id == item.user.id
@@ -47389,46 +47400,44 @@ var render = function() {
               ])
         ])
       }),
-      _vm._v(" "),
-      _c("div", { staticClass: "container pb-4" }, [
-        _c("div", { staticClass: "form-floating" }, [
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.text,
-                expression: "text"
-              }
-            ],
-            staticClass: "form-control",
-            staticStyle: { height: "100px" },
-            attrs: {
-              placeholder: "Leave a comment here",
-              id: "floatingTextarea2",
-              name: "message"
-            },
-            domProps: { value: _vm.text },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.text = $event.target.value
-              }
+      0
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "comment-area" }, [
+      _c("textarea", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.text,
+            expression: "text"
+          }
+        ],
+        staticClass: "form-control",
+        staticStyle: { height: "calc(100% - 37px)" },
+        attrs: {
+          placeholder: "Leave a comment here",
+          id: "floatingTextarea2",
+          name: "message"
+        },
+        domProps: { value: _vm.text },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
             }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-primary", on: { click: _vm.postMessage } },
-            [_vm._v("Comments")]
-          )
-        ])
-      ])
-    ],
-    2
-  )
+            _vm.text = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", on: { click: _vm.postMessage } },
+        [_vm._v("Comments")]
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

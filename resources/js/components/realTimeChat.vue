@@ -1,35 +1,35 @@
 <template>
-    <div class="container" >
-        <div v-for="(item, post) in posts" :key="post">
-            
-            <div class="d-flex justify-content-end" v-if="user.id == item.user.id">
-                <div class="card mb-3 w-50">
-                    <div class="card-body post-body">
-                        <p class="card-title post-content">{{item.message}}</p>
-                        <p class="text-muted post-time">{{ format(Date.parse(item.created_at), 'yyyy-MM-dd HH:mm', {locale: jaLocale}) }}</p>
+    <div class="app-content">
+        <div class="chat-window" ref="chatWindow">
+            <div v-for="(item, post) in posts" :key="post">
+                
+                <div class="d-flex justify-content-end" v-if="user.id == item.user.id">
+                    <div class="card mb-3 w-50">
+                        <div class="card-body post-body">
+                            <p class="card-title post-content">{{item.message}}</p>
+                            <p class="text-muted post-time">{{ format(Date.parse(item.created_at), 'yyyy-MM-dd HH:mm', {locale: jaLocale}) }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="d-flex" v-else>
-                <div class="col-lg-1 col-2">
-                    <a :href="'/profile/' + item.user.id"><img class="w-100" :src="item.user.user_image" alt="user_image" style="border-radius: 50%"></a>
-                    <h5 class="text-muted text-center" style="font-size: 15px;">{{item.user.name}}</h5>
-                </div>                 
-                <div class="card mb-3 w-50">                       
-                    <div class="card-body post-body">
-                        <p class="card-title post-content">{{item.message}}</p>
-                        <p class="text-muted post-time">{{ format(Date.parse(item.created_at), 'yyyy-MM-dd HH:mm', {locale: jaLocale}) }}</p>
+                <div class="d-flex" v-else>
+                    <div class="col-lg-1 col-2">
+                        <a :href="'/profile/' + item.user.id"><img class="w-100" :src="item.user.user_image" alt="user_image" style="border-radius: 50%"></a>
+                        <h5 class="text-muted text-center" style="font-size: 15px;">{{item.user.name}}</h5>
+                    </div>                 
+                    <div class="card mb-3 w-50">                       
+                        <div class="card-body post-body">
+                            <p class="card-title post-content">{{item.message}}</p>
+                            <p class="text-muted post-time">{{ format(Date.parse(item.created_at), 'yyyy-MM-dd HH:mm', {locale: jaLocale}) }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-        <div class="container pb-4">            
-            <div class="form-floating">
-                <textarea v-model="text" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="message"></textarea>
-                <button @click="postMessage" class="btn btn-primary">Comments</button>
-            </div>
+        <div class="comment-area">          
+            <textarea v-model="text" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: calc(100% - 37px)" name="message"></textarea>
+            <button @click="postMessage" class="btn btn-primary">Comments</button>   
         </div>
     </div>
 </template>
@@ -51,17 +51,27 @@
                 text: ""
             }
         },
+        created() {
+            this.fetchMessages();
+        },
 
         mounted() {
-            this.fetchMessages();
-            console.log("fetched!");
             Echo.channel('channel').listen('PostSent', (e) => {
                 this.fetchMessages();
-                console.log("fetched!");
             });
         },
 
+        updated() {
+            this.scrollToEnd();
+        },
         methods: {
+            scrollToEnd(){
+                this.$nextTick(() => {
+                    const chatLog = this.$refs.chatWindow;
+                    if (!chatLog) return;
+                    chatLog.scrollTop = chatLog.scrollHeight;
+                })
+            },
             fetchMessages() {
                 const url = '/ajax/board/read?id='+ this.boardid;
                 axios.get(url).then(response => {

@@ -32,7 +32,7 @@
 
 </head>
 <body>
-    <div class="header">
+    <header class="pb-4">
         <nav class="navbar navbar-expand-md navbar-light bg-red-100 shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -95,9 +95,9 @@
                 </div>
             </div>
         </nav>
-    </div>
+</header>
 
-    <div class="content py-4">
+    <div class="content">
         <div class="main">
             @yield('content')
         </div>
