@@ -48,29 +48,3 @@ html {
 #app {
     height: calc(100% - 100px);
 }
-
-.app-content{
-    position: relative;
-    height: 100%;
-}
-
-.chat-window{
-    overflow: scroll;
-    height: 80%;
-}
-
-.post-content{
-    font-size: 1.4rem;
-}
-
-.post-time{
-    font-size: 0.8rem;
-    margin-bottom: 0px;
-}
-
-.comment-area{
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    height: 20%;
-}

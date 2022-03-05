@@ -8,12 +8,15 @@ use Illuminate\Http\Request;
 
 class BoardController extends Controller
 {
+    //自分のボード一覧表示関数
     public function index(){
+        //ログインユーザーの作成したボードを読込viewに渡して表示
         $user = Auth::user();
         $boards = Board::where('user_id',$user->id)->orderby('created_at','desc')->paginate(15);
         return view('board.list', ['boards' => $boards]);
     }
 
+    //ボード作成ページ表示関数
     public function add() {
         return view('board.create_board');
     }

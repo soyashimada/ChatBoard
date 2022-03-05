@@ -3,9 +3,9 @@
         <div class="chat-window" ref="chatWindow">
             <div v-for="(item, post) in posts" :key="post">
                 
-                <div class="d-flex justify-content-end" v-if="user.id == item.user.id">
+                <div class="d-flex justify-content-end" v-if="loginuser.id == item.user.id">
                     <div class="card mb-3 w-50">
-                        <div class="card-body post-body">
+                        <div class="card-body post-body py-2">
                             <p class="card-title post-content">{{item.message}}</p>
                             <p class="text-muted post-time">{{ format(Date.parse(item.created_at), 'yyyy-MM-dd HH:mm', {locale: jaLocale}) }}</p>
                         </div>
@@ -18,7 +18,7 @@
                         <h5 class="text-muted text-center" style="font-size: 15px;">{{item.user.name}}</h5>
                     </div>                 
                     <div class="card mb-3 w-50">                       
-                        <div class="card-body post-body">
+                        <div class="card-body post-body py-2">
                             <p class="card-title post-content">{{item.message}}</p>
                             <p class="text-muted post-time">{{ format(Date.parse(item.created_at), 'yyyy-MM-dd HH:mm', {locale: jaLocale}) }}</p>
                         </div>
@@ -34,6 +34,34 @@
     </div>
 </template>
 
+<style scoped>
+    .app-content{
+        position: relative;
+        height: 100%;
+    }
+
+    .chat-window{
+        overflow: scroll;
+        height: 80%;
+    }
+
+    .post-content{
+        font-size: 1.4rem;
+    }
+
+    .post-time{
+        font-size: 0.8rem;
+        margin-bottom: 0px;
+    }
+
+    .comment-area{
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        height: 20%;
+    }
+</style>
+
 <script>
     import format from 'date-fns/format'
     import jaLocale from 'date-fns/locale/ja'
@@ -46,7 +74,7 @@
                 format,
                 jaLocale,
                 posts: [],
-                user: [],
+                loginuser: [],
                 boardid: this.id,
                 text: ""
             }
@@ -76,7 +104,7 @@
                 const url = '/ajax/board/read?id='+ this.boardid;
                 axios.get(url).then(response => {
                     this.posts = response.data.posts;
-                    this.user = response.data.user;
+                    this.loginuser = response.data.loginuser;
                 })
             },
             postMessage() {

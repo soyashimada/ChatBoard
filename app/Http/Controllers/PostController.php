@@ -40,10 +40,10 @@ class PostController extends Controller
 
     //ajax用メッセージデータ送信
     public function get_posts(Request $request) {
-        $user = Auth::user();
+        $loginuser = Auth::user();
         $posts = Post::with('user')->where('board_id',$request->id)->orderby('created_at', 'asc')->get();
 
-        return ['posts' => $posts, 'user' => $user];
+        return ['posts' => $posts, 'loginuser' => $loginuser];
     }
 
 }
