@@ -63,6 +63,6 @@ class UserProfileController extends Controller
             $user->fill($form)->save();
         }
 
-        return redirect(route('profile',['id' => $user->id]));
+        return redirect(route('profile',['user' => $user->id]));
     }
 }
