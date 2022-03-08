@@ -97,7 +97,7 @@
         </nav>
 </header>
 
-    <div class="content">
+    <div class="content" style="margin-bottom: 40px;">
         <div class="main">
             @yield('content')
         </div>
