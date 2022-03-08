@@ -32,7 +32,7 @@
                     <h4 class="card-subtitle">{{$board->description}}</h4>
                 </div>
             </div>
+            @endforeach
         </div>
-        @endforeach
     </div>
 @endsection

@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Board;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class UserProfileController extends Controller
 {
     public function index(User $user){
-        return view('userPage', ['profiledUser' => $user]);
+        $boards = Board::where('user_id',$user->id)->orderby('created_at','desc')->take(10)->get();
+        return view('userPage', ['profiledUser' => $user, 'boards' => $boards]);
     }
 
     public function select_setting_profile(){

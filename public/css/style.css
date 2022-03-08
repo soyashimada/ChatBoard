@@ -3,7 +3,6 @@ html {
 }
 
 /* top page */
-
 .recently-boards{
     width: 90%;
     margin: 0 auto;
@@ -16,6 +15,10 @@ html {
 }
 
 /* user profile page */
+.profile-info{
+    margin-bottom: 20px;
+}
+
 .profile-name{
     font-size: 3rem;
 }
@@ -26,10 +29,17 @@ html {
     }
 }
 
-@media (max-width: 575px){
-    .user_profile{
-        text-align: center;
-    }
+.profile-link{
+    display: block;
+}
+
+.profile-card{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.user_profile{
+    text-align: center;
 }
 
 /* chat page */
