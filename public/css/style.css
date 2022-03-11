@@ -4,7 +4,7 @@ html {
 
 /* top page */
 .recently-boards{
-    width: 90%;
+    width: 85%;
     margin: 0 auto;
 }
 
@@ -12,6 +12,56 @@ html {
     .recently-boards{
         width: 100%;
     }
+}
+
+.recently-board-margin{
+    position: relative;
+    padding: 0.2em 0.2em;
+    height: 200px;
+}
+
+@media (max-width: 767px){
+    .recently-board-margin{
+        padding: 0.2em 0;
+        height: 180px;
+    }
+}
+
+.recently-board-border{
+    border: 2px solid;
+    border-radius: 5px;
+    border-color: #aaaaaa;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.recently-board-border:hover{
+    opacity: 0.5;
+    transition: opacity 0.2s ease-in-out 0s;
+}
+
+.recently-board-link{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.recently-board-body-top{
+    border-bottom: 1px solid;
+    border-color: #aaaaaa;
+}
+
+.recently-board-title{
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: rgb(92, 92, 92);
+}
+
+.recently-board-day{
+    margin-bottom: 1px;
 }
 
 /* user profile page */

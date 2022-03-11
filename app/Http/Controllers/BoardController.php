@@ -12,7 +12,7 @@ class BoardController extends Controller
     public function index(){
         //ログインユーザーの作成したボードを読込viewに渡して表示
         $user = Auth::user();
-        $boards = Board::where('user_id',$user->id)->orderby('created_at','desc')->paginate(15);
+        $boards = Board::where('user_id',$user->id)->orderby('created_at','desc')->paginate(6);
         return view('board.list', ['boards' => $boards]);
     }
 
