@@ -32,7 +32,7 @@
 
 </head>
 <body>
-    <header class="pb-4">
+    <header class="mb-4">
         <nav class="navbar navbar-expand-md navbar-light bg-red-100 shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -97,13 +97,13 @@
         </nav>
 </header>
 
-    <div class="content" style="margin-bottom: 40px;">
+    <div class="content">
         <div class="main">
             @yield('content')
         </div>
     </div>
 
-    <div class="footer fixed-bottom">
+    <div class="footer">
         <div class="container-fluid border-top bg-dark" style="height: 40px">
             <div class="footer-content mr-4 mt-1">
                 <p class="d-flex justify-content-end" style="color: white">copyright 2022 soya.</p>

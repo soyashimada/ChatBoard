@@ -22,7 +22,7 @@
         </div>
     </div>
     
-    <div class="container mb-5">
+    <div class="container">
         <p style="font-size: 3.0rem">最近作られたボード</p>
         <div class="recently-boards row">
             @foreach ($boards as $board)
