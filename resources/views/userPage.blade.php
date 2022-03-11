@@ -38,21 +38,27 @@
     </div>
 
     <div class="container">
-        <p style="font-size: 3.0rem">{{ $profiledUser->name}}のボード</p>
-        <div class="pb-5">
-            @if(!($boards->isEmpty()))
-                @foreach ($boards as $board)
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title"><a href="{{ route('read',['id' => $board->id]) }}">{{$board->title}}</a></h3>
-                            <h4 class="card-subtitle">{{$board->description}}</h4>
+        <p style="font-size: 3.0rem">{{ $profiledUser->name}}が最近作成したボード</p>
+        @if(!($boards->isEmpty()))
+        <div class="list-boards row">
+            @foreach ($boards as $board)
+                <div class="list-board-margin col-12 col-md-6 col-lg-4">
+                    <div class="list-board-color">
+                        <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}"></a>
+                        <div class="list-board-body">
+                            <div class="list-board-body-top">
+                                <p class="list-board-title mb-0">{{$board->title}}</p>
+                                <p class="list-board-day text-muted">{{$board->created_at->isoFormat('YYYY.M.D(dd)')}}</p>
+                            </div>
+                            <p class="list-board-subtitle">{{ Str::limit( $board->description, 94, '...') }}</p>
                         </div>
                     </div>
-                @endforeach
-            @else
-                <p>このユーザーのボードは見つかりませんでした</p>
-            @endif
+                </div>
+            @endforeach
         </div>
+        @else
+            <p>このユーザーのボードは見つかりませんでした</p>
+        @endif
     </div>
     
 @endsection

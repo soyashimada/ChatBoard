@@ -24,20 +24,20 @@
     
     <div class="container">
         <p style="font-size: 3.0rem">最近作られたボード</p>
-        <div class="recently-boards row">
+        <div class="list-boards row">
             @foreach ($boards as $board)
-            <div class="recently-board-margin col-12 col-md-6 col-lg-4">
-                <div class="recently-board-border">
-                    <a class="recently-board-link" href="{{ route('read',['id' => $board->id]) }}"></a>
-                    <div class="recently-board-body">
-                        <div class="recently-board-body-top">
-                            <p class="recently-board-title mb-0">{{$board->title}}</p>
-                            <p class="recently-board-day text-muted">{{$board->created_at->isoFormat('YYYY.M.D(dd)')}}</p>
+                <div class="list-board-margin col-12 col-md-6 col-lg-4">
+                    <div class="list-board-color">
+                        <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}"></a>
+                        <div class="list-board-body">
+                            <div class="list-board-body-top">
+                                <p class="list-board-title mb-0">{{$board->title}}</p>
+                                <p class="list-board-day text-muted">{{$board->created_at->isoFormat('YYYY.M.D(dd)')}}</p>
+                            </div>
+                            <p class="list-board-subtitle">{{ Str::limit( $board->description, 94, '...') }}</p>
                         </div>
-                        <p class="recently-board-subtitle">{{ Str::limit( $board->description, 94, '...') }}</p>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>
