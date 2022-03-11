@@ -17,7 +17,7 @@ html {
 .recently-board-margin{
     position: relative;
     padding: 0.2em 0.2em;
-    height: 200px;
+    height: 250px;
 }
 
 @media (max-width: 767px){
