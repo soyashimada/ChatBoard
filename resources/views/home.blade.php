@@ -32,7 +32,20 @@
                         <div class="list-board-body">
                             <div class="list-board-body-top">
                                 <p class="list-board-title mb-0">{{$board->title}}</p>
-                                <p class="list-board-day text-muted">{{$board->created_at->isoFormat('YYYY.M.D(dd)')}}</p>
+                                <p class="list-board-user text-muted">{{ '@'.$board->user->name }}</p>
+                                <p class="list-board-day text-muted">
+                                    <?php $var = \Carbon\Carbon::parse($board->created_at)->diffInDays(\Carbon\Carbon::now()) ?>
+                                    @switch( $var )
+                                        @case(0)
+                                             今日
+                                            @break
+                                        @case(1)
+                                             昨日
+                                            @break
+                                        @default
+                                             {{\Carbon\Carbon::parse($board->created_at)->diffInDays(\Carbon\Carbon::now())}}日前
+                                    @endswitch
+                                </p>
                             </div>
                             <p class="list-board-subtitle">{{ Str::limit( $board->description, 94, '...') }}</p>
                         </div>

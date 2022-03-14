@@ -75,10 +75,10 @@ header {
     color: rgb(92, 92, 92);
 }
 
-.list-board-day{
+.list-board-day,.list-board-user{
+    display: inline-block;
     margin-bottom: 1px;
 }
-
 
 /* user profile page */
 .profile-name{

@@ -17,7 +17,7 @@ class HomeController extends Controller
     public function index()
     {
         //最近作成されたボードを読込、viewに渡して表示
-        $boards = Board::orderby('created_at','desc')->take(10)->get();
+        $boards = Board::with('user')->orderby('created_at','desc')->take(10)->get();
         return view('home',['boards' => $boards]);
     }
 }
