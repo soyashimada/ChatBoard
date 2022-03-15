@@ -54,7 +54,8 @@ header {
 
 .list-board-color:hover{
     opacity: 0.8;
-    transition: opacity 0.2s ease-in-out 0s;
+    background-color: paleturquoise;
+    transition: background-color 0.4s ease-in-out 0s;
 }
 
 .list-board-link{
@@ -80,6 +81,10 @@ header {
     margin-bottom: 1px;
 }
 
+.list-board-user{
+    color: steelblue;
+}
+
 /* user profile page */
 .profile-name{
     font-size: 3rem;
@@ -103,6 +108,43 @@ header {
 .user_profile{
     text-align: center;
 }
+
+
+/*search page */
+.search-board{
+    position: relative;
+}
+
+.search-board:hover{
+    opacity: 0.8;
+    background-color: paleturquoise;
+    transition: background-color 0.4s ease-in-out 0s;
+}
+
+.search-board-link{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.search-board-title{
+    font-size: 2.0rem;
+    margin-bottom: 0px;
+}
+
+.search-board-day, .search-board-user{
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.search-board-user{
+    color: steelblue;
+    font-size: 1.2rem;
+}
+
+
 
 /* chat page */
 .read-position{

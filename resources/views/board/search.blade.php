@@ -33,12 +33,28 @@
     @if(isset($boards))
         <div class="container">
             @if (!($boards->isEmpty()))
-                @foreach ($boards as $item)
-                <div class="card">
+                @foreach ($boards as $board)
+                <div class="card search-board">
+                    <a class="search-board-link" href="{{ route('read',['id' => $board->id]) }}"></a>
                     <div class="card-body">
-                        <h3 class="card-title"><a href="{{ route('read',['id' => $item->id]) }}">{{$item->title}}</a></h3>
-                        <h4 class="card-subtitle">user - {{$item->user->name}}</h4>
-                        <p class="card-text">{{$item->description}}</p>
+                        <div class="search-board-body-top">
+                            <p class="search-board-title">{{$board->title}}</p>
+                            <p class="search-board-user">{{'@'.$board->user->name}}</p>
+                            <p class="search-board-day text-muted">
+                                <?php $var = \Carbon\Carbon::parse($board->created_at)->diffInDays(\Carbon\Carbon::now()) ?>
+                                @switch( $var )
+                                    @case(0)
+                                            今日
+                                        @break
+                                    @case(1)
+                                            昨日
+                                        @break
+                                    @default
+                                            {{\Carbon\Carbon::parse($board->created_at)->diffInDays(\Carbon\Carbon::now())}}日前
+                                @endswitch
+                            </p>
+                        </div>
+                        <p class="card-text">{{$board->description}}</p>
                     </div>
                 </div>
                 @endforeach
