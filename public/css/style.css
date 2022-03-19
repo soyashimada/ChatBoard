@@ -19,8 +19,20 @@ header {
     width: 100%;
 }
 
+/* component */
+.page-title{
+    font-size: 2.5rem;
+}
+
+@media (max-width: 575px){
+    .page-title{
+        font-size: 2.2rem;
+    }
+}
 
 /* top page */
+/* Profile page */
+
 .list-boards{
     width: 85%;
     margin: 0 auto;
@@ -74,6 +86,12 @@ header {
 .list-board-title{
     font-size: 1.3rem;
     color: rgb(92, 92, 92);
+}
+
+@media (max-width: 575px){
+    .list-board-title{
+        font-size: 1.1rem;
+    }
 }
 
 .list-board-day,.list-board-user{
