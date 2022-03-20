@@ -2,7 +2,7 @@
 
 @section('title','ChatBoard')
 @section('description','this is chatboard')
-@section('base_url','http://localhost/')
+@section('base_url',config('app.url'))
 
 @section('content')
     <div class="read-position">
