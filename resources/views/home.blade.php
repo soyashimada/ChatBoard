@@ -34,7 +34,9 @@
                                 <p class="list-board-title mb-0">{{$board->title}}</p>
                                 <p class="list-board-user">{{ '@'.$board->user->name }}</p>
                                 <p class="list-board-day text-muted">
-                                    <?php $var = \Carbon\Carbon::parse($board->created_at)->diffInDays(\Carbon\Carbon::now()) ?>
+                                    @php
+                                        $var = \Carbon\Carbon::parse($board->created_at)->diffInDays(\Carbon\Carbon::now())
+                                    @endphp
                                     @switch( $var )
                                         @case(0)
                                              今日
@@ -43,7 +45,7 @@
                                              昨日
                                             @break
                                         @default
-                                             {{\Carbon\Carbon::parse($board->created_at)->diffInDays(\Carbon\Carbon::now())}}日前
+                                             {{$var}}日前
                                     @endswitch
                                 </p>
                             </div>
