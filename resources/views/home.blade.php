@@ -6,6 +6,7 @@
 
 @section('content')
    
+    <!-- top画面上部分 -->
     <div class="container mb-5 text-center">
         <div class="jumbotron">
             @auth
@@ -22,6 +23,7 @@
         </div>
     </div>
     
+    <!-- 最近作られたボードを表示 -->
     <div class="container">
         <p style="font-size: 3.0rem">最近作られたボード</p>
         <div class="list-boards row">
@@ -33,6 +35,8 @@
                             <div class="list-board-body-top">
                                 <p class="list-board-title mb-0">{{$board->title}}</p>
                                 <p class="list-board-user">{{ '@'.$board->user->name }}</p>
+
+                                <!-- 何日前の投稿かを表示 -->
                                 <p class="list-board-day text-muted">
                                     @php
                                         $var = \Carbon\Carbon::parse($board->created_at)->diffInDays(\Carbon\Carbon::now())
@@ -48,6 +52,7 @@
                                              {{$var}}日前
                                     @endswitch
                                 </p>
+
                             </div>
                             <p class="list-board-subtitle">{{ Str::limit( $board->description, 94, '...') }}</p>
                         </div>

@@ -11,6 +11,7 @@
         @endslot
     @endcomponent
 
+    <!-- プロフィール情報表示部分 -->
     <div class="profile-info mb-3">
         <div class="container">
             <div class="pb-5">
@@ -28,7 +29,9 @@
                         <p>{{ $profiledUser->status_message }}</p>
                     </div>
                 </div>
-            </div>       
+            </div>
+            
+            <!-- ログインしているユーザーだったら、プロフィール編集ボタンを表示 -->
             <div class="text-center">
             @if($profiledUser->id == Auth::user()->id)
                 <a class="btn btn-secondary" href="{{ route('setting_profile_top') }}" role="button">プロフィールを編集</a>
@@ -37,6 +40,7 @@
         </div>
     </div>
 
+    <!-- プロフィールユーザーが最近作成したボードを表示 -->
     <div class="container">
         <p style="font-size: 3.0rem">{{ $profiledUser->name}}が最近作成したボード</p>
         @if(!($boards->isEmpty()))
