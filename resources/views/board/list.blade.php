@@ -11,6 +11,7 @@
         @endslot
     @endcomponent
     
+    <!-- ログインユーザーが作成したいボードを一覧表示する -->
     <div class="container">
         @if(!($boards->isEmpty()))
             @foreach ($boards as $board)

@@ -11,15 +11,15 @@
         @endslot
     @endcomponent
 
-    @if( count($errors) )
-    <ul>
-        @foreach($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-    @endif
-
+    <!-- ボード作成ページ -->
     <div class="container">
+        @if( count($errors) )
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        @endif
         <form action="/board/create" method="post">
             @csrf
             <div class="mb-3">

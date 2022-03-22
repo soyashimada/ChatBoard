@@ -11,6 +11,7 @@
         @endslot
     @endcomponent
 
+    <!-- ボード検索ページ -->
     <div class="container mb-4">
         @if( count($errors) )
         <ul>

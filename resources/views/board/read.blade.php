@@ -13,7 +13,7 @@
             @endslot
         @endcomponent
 
-
+        <!-- Vueコンポーネント realTimechat -->
         <div id="app">
             <real-time-chat v-bind:id="{{ $board->id }}"></real-time-chat>
         </div>
