@@ -11,6 +11,7 @@
         @endslot
     @endcomponent
 
+    
     <!-- ボード作成ページ -->
     <div class="container">
         @if( count($errors) )
