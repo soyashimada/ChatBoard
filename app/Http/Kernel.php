@@ -23,7 +23,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
 
         //2022-03-06 Heroku Https接続用
-        \App\Http\Middleware\ForceHttps::class,
+        // \App\Http\Middleware\ForceHttps::class,
     ];
 
     /**
