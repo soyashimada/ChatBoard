@@ -20,7 +20,7 @@
             @endforeach
         </ul>
         @endif
-
+        <p>検索したいワードを入力しよう！</p>
         <form action="{{ route('search') }}" method="get">
             @csrf
             <div class="mb-3">

@@ -21,6 +21,7 @@
             @endforeach
         </ul>
         @endif
+        <p>あなたのボードを作成しよう！</p>
         <form action="/board/create" method="post">
             @csrf
             <div class="mb-3">
