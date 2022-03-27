@@ -48,6 +48,7 @@
 
                     </ul>
 
+                    <!-- 3/27 ヘッダーリスト部分を変える予定 -->
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
