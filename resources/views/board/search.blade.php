@@ -20,7 +20,7 @@
             @endforeach
         </ul>
         @endif
-        <p>検索したいワードを入力しよう！</p>
+        <p class="system-message">検索したいワードを入力しよう！</p>
         <form action="{{ route('search') }}" method="get">
             @csrf
             <div class="mb-3">
@@ -61,7 +61,7 @@
                 @endforeach
                 {{ $boards->links('pagination::bootstrap-4') }}
             @else
-                <p>ボードがありませんでした。</p>
+                <p class="system-message">ボードがありませんでした。</p>
             @endif
         </div>
     @endif

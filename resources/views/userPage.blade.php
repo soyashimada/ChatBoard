@@ -61,7 +61,7 @@
             @endforeach
         </div>
         @else
-            <p>このユーザーのボードは見つかりませんでした</p>
+            <p class="system-message">このユーザーのボードは見つかりませんでした</p>
         @endif
     </div>
     

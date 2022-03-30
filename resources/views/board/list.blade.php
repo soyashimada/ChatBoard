@@ -14,7 +14,7 @@
     <!-- ログインユーザーが作成したいボードを一覧表示する -->
     <div class="container">
         @if(!($boards->isEmpty()))
-        <p>あなたのボード一覧</p>
+        <p class="system-message">あなたのボード一覧</p>
             @foreach ($boards as $board)
                 <div class="card">
                     <div class="card-body">
