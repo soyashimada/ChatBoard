@@ -9,6 +9,10 @@ header {
     z-index: 1;
 }
 
+.nav-img {
+    width: 35px;
+}
+
 .content {
     padding: 70px 0px 50px;
 }
