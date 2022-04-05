@@ -28,7 +28,7 @@
         <p style="font-size: 3.0rem">最近作られたボード</p>
         <div class="list-boards row">
             @foreach ($boards as $board)
-                <div class="list-board-margin col-12 col-md-6 col-lg-4">
+                <div class="list-board-margin col-12 col-md-6">
                     <div class="list-board-color">
                         <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}"></a>
                         <div class="list-board-body">

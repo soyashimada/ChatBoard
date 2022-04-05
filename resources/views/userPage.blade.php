@@ -46,7 +46,7 @@
         @if(!($boards->isEmpty()))
         <div class="list-boards row">
             @foreach ($boards as $board)
-                <div class="list-board-margin col-12 col-md-6 col-lg-4">
+                <div class="list-board-margin col-12 col-md-6">
                     <div class="list-board-color">
                         <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}"></a>
                         <div class="list-board-body">
@@ -54,7 +54,7 @@
                                 <p class="list-board-title mb-0">{{$board->title}}</p>
                                 <p class="list-board-day text-muted">{{$board->created_at->isoFormat('YYYY.M.D(dd)')}}</p>
                             </div>
-                            <p class="list-board-subtitle">{{ Str::limit( $board->description, 94, '...') }}</p>
+                            <p class="list-board-subtitle">{{ Str::limit( $board->description, 10, '...') }}</p>
                         </div>
                     </div>
                 </div>
