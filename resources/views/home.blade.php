@@ -54,7 +54,7 @@
                                 </p>
 
                             </div>
-                            <p class="list-board-subtitle">{{ Str::limit( $board->description, 94, '...') }}</p>
+                            <p class="list-board-subtitle">{{ $board->description }}</p>
                         </div>
                     </div>
                 </div>

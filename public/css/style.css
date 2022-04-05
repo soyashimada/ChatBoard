@@ -60,13 +60,12 @@ header {
 .list-board-margin{
     position: relative;
     padding: 0;
-    min-height: 200px;
-    max-height: 250px;
+    min-height: 180px;
 }
 
 @media (max-width: 767px){
     .list-board-margin{
-        max-height: 180px;
+        min-height: 150px;
     }
 }
 

@@ -54,7 +54,7 @@
                                 <p class="list-board-title mb-0">{{$board->title}}</p>
                                 <p class="list-board-day text-muted">{{$board->created_at->isoFormat('YYYY.M.D(dd)')}}</p>
                             </div>
-                            <p class="list-board-subtitle">{{ Str::limit( $board->description, 10, '...') }}</p>
+                            <p class="list-board-subtitle">{{ $board->description }}</p>
                         </div>
                     </div>
                 </div>
