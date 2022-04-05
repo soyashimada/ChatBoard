@@ -7,24 +7,42 @@
 @section('content')
    
     <!-- top画面上部分 -->
-    <div class="container mb-5 text-center">
-        <div class="jumbotron">
-            @auth
-            <h1 class="display-4">ようこそ！ {{ Auth::user()->name }}さん！</h1>
-            @endauth
-            @guest
-            <h1 class="display-4">ようこそ！ゲストさん！</h1>
-            @endguest
-            <p class="lead">ChatBoardはシンプルなリアルタイムチャットサイト</p>
-            <hr class="my-4">
-            <p>チャットボードを作りますか？探しますか？</p>
-            <a href="{{ route('create_board') }}" class="btn btn-primary mb-1">チャットボードを作る</a>
-            <a href="{{ route('search') }}" class="btn btn-primary mb-1">チャットボードを探す</a>
+    <div class="top container text-center">
+        <div class="jumbotron top-display">
+            <div class="top-display-back">
+                @auth
+                <p class="display-4">ようこそ！ {{ Auth::user()->name }}さん！</p>
+                @endauth
+                @guest
+                <p class="display-4">ようこそ！ゲストさん！</p>
+                @endguest
+                <p class="lead">ChatBoardはシンプルなリアルタイムチャットサイト</p>
+                <hr class="my-4">
+                <p class="top-display-text">チャットボードを作って、他のユーザーとチャットを書きあいましょう</p>
+                <a href="{{ route('create_board') }}" class="btn btn-primary mb-1">チャットボードを作る</a>
+                <a href="{{ route('search') }}" class="btn btn-primary mb-1">チャットボードを探す</a>
+            </div>
         </div>
+        <hr class="my-4">
+        <div class="top-icon">
+            <div class="row">
+                <div class="col-12 col-md-6 top-icon-img">
+                    <i class="fa-solid fa-comments ml-auto"></i>
+                </div>
+                <div class="col-12 col-md-6 top-icon-text">
+                    <div class="top-icon-text-font">
+                        <p>ChatBoardはリアルタイムチャットサイトです。
+                        <br> 掲示板（チャットボード）を作り、
+                        <br>みんなでリアルタイムチャットを楽しみましょう</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="my-4">
     </div>
     
     <!-- 最近作られたボードを表示 -->
-    <div class="container">
+    <div class="container list">
         <p style="font-size: 3.0rem">最近作られたボード</p>
         <div class="list-boards row">
             @foreach ($boards as $board)

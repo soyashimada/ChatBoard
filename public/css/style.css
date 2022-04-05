@@ -45,7 +45,66 @@ header {
 }
 
 /* top page */
-/* Profile page */
+/* Profile page リスト表示のみ*/
+.top {
+    margin-bottom: 80px;
+}
+
+.top-display {
+    margin-bottom: 50px;
+}
+
+@media (min-width: 576px) {
+    .top-display-back {
+        padding: 20px 0;
+        background-color: white;
+        border: 1px solid;
+        border-color: white;
+        border-radius: 10px;
+    }
+}
+
+.top-icon {
+    padding: 20px 0;
+}
+
+.top-icon-img {
+    text-align: right;
+}
+
+.fa-comments {
+    color: #b6d0eb;
+    font-size: 230px;
+}
+
+.top-icon-text {
+    display: flex;
+    align-items: center;
+}
+
+.top-icon-text-font {
+    text-align: left;
+    font-size: 1rem;
+}
+
+@media (max-width: 767px){
+    .top-icon-img {
+        text-align: center;
+    }
+    
+    .top-icon-text {
+        padding: 20px 0;
+        display: block;
+    }
+    
+    .top-icon-text-font {
+        text-align: center;
+    }
+}
+
+.list {
+    margin-bottom: 100px;
+}
 
 .list-boards{
     width: 85%;
