@@ -38,6 +38,14 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('create_board') }}">create</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('search') }}">search</a>
+                    </li>
+                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">

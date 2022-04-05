@@ -14,16 +14,24 @@
     <!-- ログインユーザーが作成したいボードを一覧表示する -->
     <div class="container">
         @if(!($boards->isEmpty()))
-        <p class="system-message">あなたのボード一覧</p>
-            @foreach ($boards as $board)
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title"><a href="{{ route('read',['id' => $board->id]) }}">{{$board->title}}</a></h3>
-                        <h4 class="card-subtitle">{{$board->description}}</h4>
+            <div class="list-boards row">
+                <p class="system-message">あなたのボード一覧</p>
+                @foreach ($boards as $board)
+                    <div class="list-board-margin col-12">
+                        <div class="list-board-color">
+                            <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}"></a>
+                            <div class="list-board-body">
+                                <div class="list-board-body-top">
+                                    <p class="list-board-title mb-0">{{$board->title}}</p>
+                                    <p class="list-board-day text-muted">{{$board->created_at->isoFormat('YYYY.M.D(dd)')}}</p>
+                                </div>
+                                <p class="list-board-subtitle">{{ $board->description }}</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            @endforeach
-            {{ $boards->links('pagination::bootstrap-4') }}
+                @endforeach
+                {{ $boards->links('pagination::bootstrap-4') }}
+            </div>
         @else
             <p>ボードが見つかりませんでした</p>
         @endif
