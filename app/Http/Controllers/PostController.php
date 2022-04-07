@@ -12,7 +12,7 @@ class PostController extends Controller
 {
     public function read($id) {
         $items = Post::where('board_id',$id)->orderby('created_at', 'asc')->get();
-        $board = Board::find($id);
+        $board = Board::with('user')->find($id);
         return view('board.read', ['items' => $items, 'board' => $board]);
     }
 

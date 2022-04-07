@@ -15,7 +15,7 @@
 
         <!-- Vueコンポーネント realTimechat -->
         <div id="app">
-            <real-time-chat v-bind:id="{{ $board->id }}"></real-time-chat>
+            <real-time-chat v-bind:board="{{ $board }}"></real-time-chat>
         </div>
 
         @if( count($errors) )

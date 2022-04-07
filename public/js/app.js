@@ -1936,18 +1936,55 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "real-time-chat",
-  props: ["id"],
+  props: ["board"],
   data: function data() {
     return {
       format: date_fns_format__WEBPACK_IMPORTED_MODULE_0__["default"],
       jaLocale: date_fns_locale_ja__WEBPACK_IMPORTED_MODULE_1__["default"],
       posts: [],
       loginuser: [],
-      boardid: this.id,
+      board: this.board,
       text: ""
     };
   },
@@ -1977,7 +2014,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchMessages: function fetchMessages() {
       var _this3 = this;
 
-      var url = '/ajax/board/read?id=' + this.boardid;
+      var url = '/ajax/board/read?id=' + this.board.id;
       axios.get(url).then(function (response) {
         _this3.posts = response.data.posts;
         _this3.loginuser = response.data.loginuser;
@@ -1986,10 +2023,10 @@ __webpack_require__.r(__webpack_exports__);
     postMessage: function postMessage() {
       var _this4 = this;
 
-      var url = '/ajax/board/read?id=' + this.boardid;
+      var url = '/ajax/board/read?id=' + this.board.id;
       axios.post(url, {
         message: this.text,
-        id: this.boardid
+        id: this.board.id
       }).then(function (response) {
         _this4.text = "";
       });
@@ -6543,7 +6580,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.app-content[data-v-2bc121ce]{\n    position: relative;\n    height: 100%;\n}\n.chat-window[data-v-2bc121ce]{\n    overflow: scroll;\n    height: 80%;\n}\n.post-content[data-v-2bc121ce]{\n    font-size: 1.4rem;\n}\n.post-time[data-v-2bc121ce]{\n    font-size: 0.8rem;\n    margin-bottom: 0px;\n}\n.comment-area[data-v-2bc121ce]{\n    position: absolute;\n    bottom: 0px;\n    width: 100%;\n    height: 20%;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.app-content[data-v-2bc121ce]{\n    position: relative;\n    height: 100%;\n}\n.chat-window[data-v-2bc121ce]{\n    overflow: scroll;\n    height: 80%;\n}\n.board-description-title[data-v-2bc121ce]{\n    font-weight: bold;\n}\n.board-description-content[data-v-2bc121ce], .board-description-title[data-v-2bc121ce]{\n    font-size: 1.5rem;\n}\n.post-content[data-v-2bc121ce]{\n    font-size: 1.4rem;\n}\n.post-time[data-v-2bc121ce], .board-time[data-v-2bc121ce]{\n    font-size: 0.8rem;\n    margin-bottom: 0px;\n}\n.board-creator[data-v-2bc121ce] {\n    font-weight: bold;\n}\n.comment-area[data-v-2bc121ce]{\n    position: absolute;\n    bottom: 0px;\n    width: 100%;\n    height: 20%;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -47786,73 +47823,162 @@ var render = function() {
     _c(
       "div",
       { ref: "chatWindow", staticClass: "chat-window" },
-      _vm._l(_vm.posts, function(item, post) {
-        return _c("div", { key: post }, [
-          _vm.loginuser.id == item.user.id
-            ? _c("div", { staticClass: "d-flex justify-content-end" }, [
-                _c("div", { staticClass: "card mb-3 w-50" }, [
-                  _c("div", { staticClass: "card-body post-body py-2" }, [
-                    _c("p", { staticClass: "card-title post-content" }, [
-                      _vm._v(_vm._s(item.message))
+      [
+        _vm.board.user_id == _vm.loginuser.id
+          ? _c("div", { staticClass: "d-flex justify-content-end" }, [
+              _c("div", { staticClass: "card mb-3 w-75" }, [
+                _c(
+                  "div",
+                  { staticClass: "card-body board-description-body py-2" },
+                  [
+                    _c("p", { staticClass: "board-description-title" }, [
+                      _vm._v("＜作成者コメント＞")
                     ]),
                     _vm._v(" "),
-                    _c("p", { staticClass: "text-muted post-time" }, [
+                    _c(
+                      "p",
+                      { staticClass: "card-title board-description-content" },
+                      [_vm._v(_vm._s(_vm.board.description))]
+                    ),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-muted board-time" }, [
                       _vm._v(
                         _vm._s(
                           _vm.format(
-                            Date.parse(item.created_at),
+                            Date.parse(_vm.board.created_at),
                             "yyyy-MM-dd HH:mm",
                             { locale: _vm.jaLocale }
                           )
                         )
                       )
                     ])
-                  ])
-                ])
+                  ]
+                )
               ])
-            : _c("div", { staticClass: "d-flex" }, [
-                _c("div", { staticClass: "col-lg-1 col-2" }, [
-                  _c("a", { attrs: { href: "/profile/" + item.user.id } }, [
-                    _c("img", {
-                      staticClass: "w-100",
-                      staticStyle: { "border-radius": "50%" },
-                      attrs: { src: item.user.user_image, alt: "user_image" }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "h5",
-                    {
-                      staticClass: "text-muted text-center",
-                      staticStyle: { "font-size": "15px" }
-                    },
-                    [_vm._v(_vm._s(item.user.name))]
-                  )
+            ])
+          : _c("div", { staticClass: "d-flex" }, [
+              _c("div", { staticClass: "col-lg-1 col-2" }, [
+                _c("a", { attrs: { href: "/profile/" + _vm.board.user_id } }, [
+                  _c("img", {
+                    staticClass: "w-100",
+                    staticStyle: { "border-radius": "50%" },
+                    attrs: { src: _vm.board.user.user_image, alt: "user_image" }
+                  })
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "card mb-3 w-50" }, [
-                  _c("div", { staticClass: "card-body post-body py-2" }, [
-                    _c("p", { staticClass: "card-title post-content" }, [
-                      _vm._v(_vm._s(item.message))
+                _c(
+                  "p",
+                  {
+                    staticClass: "board-creator text-muted text-center",
+                    staticStyle: { "font-size": "15px" }
+                  },
+                  [_vm._v(_vm._s(_vm.board.user.name))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card mb-3 w-75" }, [
+                _c(
+                  "div",
+                  { staticClass: "card-body board-description-body py-2" },
+                  [
+                    _c("p", { staticClass: "board-description-title" }, [
+                      _vm._v("＜作成者コメント＞")
                     ]),
                     _vm._v(" "),
-                    _c("p", { staticClass: "text-muted post-time" }, [
+                    _c(
+                      "p",
+                      { staticClass: "card-title board-description-content" },
+                      [_vm._v(_vm._s(_vm.board.description))]
+                    ),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-muted board-time" }, [
                       _vm._v(
                         _vm._s(
                           _vm.format(
-                            Date.parse(item.created_at),
+                            Date.parse(_vm.board.created_at),
                             "yyyy-MM-dd HH:mm",
                             { locale: _vm.jaLocale }
                           )
                         )
                       )
                     ])
+                  ]
+                )
+              ])
+            ]),
+        _vm._v(" "),
+        _vm._l(_vm.posts, function(item, post) {
+          return _c("div", { key: post }, [
+            _vm.loginuser.id == item.user.id
+              ? _c("div", { staticClass: "d-flex justify-content-end" }, [
+                  _c("div", { staticClass: "card mb-3 w-50" }, [
+                    _c("div", { staticClass: "card-body post-body py-2" }, [
+                      _c("p", { staticClass: "card-title post-content" }, [
+                        _vm._v(_vm._s(item.message))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "text-muted post-time" }, [
+                        _vm._v(
+                          _vm._s(
+                            _vm.format(
+                              Date.parse(item.created_at),
+                              "yyyy-MM-dd HH:mm",
+                              { locale: _vm.jaLocale }
+                            )
+                          )
+                        )
+                      ])
+                    ])
                   ])
                 ])
-              ])
-        ])
-      }),
-      0
+              : _c("div", { staticClass: "d-flex" }, [
+                  _c("div", { staticClass: "col-lg-1 col-2" }, [
+                    _c("a", { attrs: { href: "/profile/" + item.user.id } }, [
+                      _c("img", {
+                        staticClass: "w-100",
+                        staticStyle: { "border-radius": "50%" },
+                        attrs: { src: item.user.user_image, alt: "user_image" }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      {
+                        class: [
+                          item.user.id == _vm.board.user_id
+                            ? "board-creator text-muted text-center"
+                            : "text-muted text-center"
+                        ],
+                        staticStyle: { "font-size": "15px" }
+                      },
+                      [_vm._v(_vm._s(item.user.name))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card mb-3 w-50" }, [
+                    _c("div", { staticClass: "card-body post-body py-2" }, [
+                      _c("p", { staticClass: "card-title post-content" }, [
+                        _vm._v(_vm._s(item.message))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "text-muted post-time" }, [
+                        _vm._v(
+                          _vm._s(
+                            _vm.format(
+                              Date.parse(item.created_at),
+                              "yyyy-MM-dd HH:mm",
+                              { locale: _vm.jaLocale }
+                            )
+                          )
+                        )
+                      ])
+                    ])
+                  ])
+                ])
+          ])
+        })
+      ],
+      2
     ),
     _vm._v(" "),
     _c("div", { staticClass: "comment-area" }, [
