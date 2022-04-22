@@ -208,7 +208,7 @@ header {
 
 .search-board:hover{
     opacity: 0.8;
-    background-color: paleturquoise;
+    background-color: #e9ecef;
     transition: background-color 0.4s ease-in-out 0s;
 }
 

@@ -14,7 +14,7 @@ class AddBoardSettingToBoardsTable extends Migration
     public function up()
     {
         Schema::table('boards', function (Blueprint $table) {
-            $table->boolean('active_status');
+            $table->boolean('active_status')->default(0);
         });
     }
 
