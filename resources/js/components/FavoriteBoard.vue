@@ -1,6 +1,7 @@
 <template>
     <div class="favorite">
-        <i class="fa-regular fa-heart" :class="onClickFavorite"></i>
+        <i class="fa-regular fa-heart" :class="{liked: isActive}" @click="onClickFavorite"></i>
+        <p class="favorite-num" >{{ favoriteNum }}</p>
     </div>
 </template>
 
@@ -10,12 +11,14 @@ export default {
     name: "FavoriteSomething",
     props: {
         favorite_num: Number,
+        favorite_status: Boolean,
         board_id: Number,
     },
     data: function() {
         return {
-            favorite_num: this.favorite_num,
-            isActive: false,
+            favoriteNum: this.favorite_num,
+            isActive: this.favorite_status,
+            boardId: this.board_id
         }
     },
     computed: {
@@ -26,24 +29,32 @@ export default {
     mounted: {
         onClickFavorite (){
             //クリックイベント
+            if(this.isActive){
+                deleteFavoriteData();
+            }else{
+                putFavoriteData();
+            }
+            this.isActive = !this.isActive;
         }
     },
     methods : {
         putFavoriteData() {
             axios.put(
 
-            ).then(
+            ).then((response) => {
                 //お気に入り数のローカルプロパティ更新
-            ).catch(
+                ++ this.favoriteNum;
+            }).catch(
                 
             )
         },
         deleteFavoriteData() {
             axios.delete(
 
-            ).then(
+            ).then((response) => {
                 //お気に入り数のローカルプロパティ更新
-            ).catch(
+                -- this.favoriteNum;
+            }).catch(
 
             )
         }
