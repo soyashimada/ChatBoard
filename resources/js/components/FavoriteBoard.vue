@@ -39,9 +39,8 @@ export default {
     },
     methods : {
         putFavoriteData() {
-            axios.put(
-
-            ).then((response) => {
+            url = 'ajax/board/favorite?id=' + this.boardId;
+            axios.put(url).then((response) => {
                 //お気に入り数のローカルプロパティ更新
                 ++ this.favoriteNum;
             }).catch(
@@ -49,9 +48,8 @@ export default {
             )
         },
         deleteFavoriteData() {
-            axios.delete(
-
-            ).then((response) => {
+            url = 'ajax/board/favorite?id=' + this.boardId;
+            axios.delete(url).then((response) => {
                 //お気に入り数のローカルプロパティ更新
                 -- this.favoriteNum;
             }).catch(
