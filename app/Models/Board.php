@@ -21,7 +21,7 @@ class Board extends Model
     }
 
     public function boardFavorites(){
-        return $this->hasMany(BoardFavorites::class);
+        return $this->hasMany(BoardFavorite::class);
     }
 
     public function getFavoritesCountAttribute(){

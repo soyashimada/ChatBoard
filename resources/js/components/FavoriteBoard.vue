@@ -8,7 +8,7 @@
 <script>
 
 export default {
-    name: "FavoriteSomething",
+    name: "FavoriteBoard",
     props: {
         favorite_num: Number,
         favorite_status: Boolean,
@@ -21,23 +21,16 @@ export default {
             boardId: this.board_id
         }
     },
-    computed: {
-        calcFavoriteNum () {
-            //いいね数の更新処理
-        }
-    },
-    mounted: {
+    methods : {
         onClickFavorite (){
             //クリックイベント
             if(this.isActive){
-                deleteFavoriteData();
+                this.deleteFavoriteData();
             }else{
-                putFavoriteData();
+                this.putFavoriteData();
             }
             this.isActive = !this.isActive;
-        }
-    },
-    methods : {
+        },
         putFavoriteData() {
             url = 'ajax/board/favorite?id=' + this.boardId;
             axios.put(url).then((response) => {
