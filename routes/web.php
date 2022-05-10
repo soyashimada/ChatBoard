@@ -25,8 +25,8 @@ Route::middleware('auth')->group(function(){
     //ボードのチャットページ
     Route::get('board/read/{id}', 'PostController@read')->where('id','[0-9]+')->name('read');
     Route::post('board/read/{id}','PostController@post')->where('id','[0-9]+');
-    Route::get('ajax/board/read', 'PostController@get_posts');
-    Route::post('ajax/board/read', 'PostController@post');
+    Route::get('api/board/read', 'PostController@get_posts');
+    Route::post('api/board/read', 'PostController@post');
 
     //ボード作成ページ
     Route::get('board/create', 'BoardController@add')->name('create_board');

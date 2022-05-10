@@ -105,14 +105,14 @@
 
     export default {
         name: "real-time-chat",
-        props: ["board"],
+        props: ["board_data"],
         data() {
             return {
                 format,
                 jaLocale,
                 posts: [],
                 loginuser: [],
-                board: this.board,
+                board: this.board_data,
                 text: ""
             }
         },
@@ -138,14 +138,14 @@
                 })
             },
             fetchMessages() {
-                const url = '/ajax/board/read?id='+ this.board.id;
+                const url = '/api/board/read?id='+ this.board.id;
                 axios.get(url).then(response => {
                     this.posts = response.data.posts;
                     this.loginuser = response.data.loginuser;
                 })
             },
             postMessage() {
-                const url = '/ajax/board/read?id='+ this.board.id;
+                const url = '/api/board/read?id='+ this.board.id;
                 axios.post(url, {message: this.text, id: this.board.id}).then(response => {
                     this.text = "";
                 })

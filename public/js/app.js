@@ -2043,14 +2043,14 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "real-time-chat",
-  props: ["board"],
+  props: ["board_data"],
   data: function data() {
     return {
       format: date_fns_format__WEBPACK_IMPORTED_MODULE_0__["default"],
       jaLocale: date_fns_locale_ja__WEBPACK_IMPORTED_MODULE_1__["default"],
       posts: [],
       loginuser: [],
-      board: this.board,
+      board: this.board_data,
       text: ""
     };
   },
@@ -2080,7 +2080,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchMessages: function fetchMessages() {
       var _this3 = this;
 
-      var url = '/ajax/board/read?id=' + this.board.id;
+      var url = '/api/board/read?id=' + this.board.id;
       axios.get(url).then(function (response) {
         _this3.posts = response.data.posts;
         _this3.loginuser = response.data.loginuser;
@@ -2089,7 +2089,7 @@ __webpack_require__.r(__webpack_exports__);
     postMessage: function postMessage() {
       var _this4 = this;
 
-      var url = '/ajax/board/read?id=' + this.board.id;
+      var url = '/api/board/read?id=' + this.board.id;
       axios.post(url, {
         message: this.text,
         id: this.board.id
