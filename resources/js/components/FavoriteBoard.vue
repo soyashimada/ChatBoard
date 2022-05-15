@@ -1,9 +1,30 @@
 <template>
     <div class="favorite">
-        <i class="fa-regular fa-heart" :class="{liked: isActive}" @click="onClickFavorite"></i>
+        <i class="fa-heart" :class="{'fa-solid': isActive, 'fa-regular': !isActive}" @click="onClickFavorite"></i>
         <p class="favorite-num" >{{ favoriteNum }}</p>
     </div>
 </template>
+
+<style scoped>
+
+    .favorite {
+        display: flex;
+        align-items: center;
+    }
+
+    .fa-heart {
+        color: rgb(209, 21, 93);
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .favorite-num {
+        display: inline-block;
+        margin: 0;
+        font-size: 15px;
+    }
+
+</style>
 
 <script>
 
@@ -32,7 +53,7 @@ export default {
             this.isActive = !this.isActive;
         },
         putFavoriteData() {
-            url = 'ajax/board/favorite?id=' + this.boardId;
+            url = 'api/board/favorite?id=' + this.boardId;
             axios.put(url).then((response) => {
                 //お気に入り数のローカルプロパティ更新
                 ++ this.favoriteNum;
@@ -41,7 +62,7 @@ export default {
             )
         },
         deleteFavoriteData() {
-            url = 'ajax/board/favorite?id=' + this.boardId;
+            url = 'api/board/favorite?id=' + this.boardId;
             axios.delete(url).then((response) => {
                 //お気に入り数のローカルプロパティ更新
                 -- this.favoriteNum;
