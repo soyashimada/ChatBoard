@@ -53,7 +53,7 @@ export default {
             this.isActive = !this.isActive;
         },
         putFavoriteData() {
-            url = 'api/board/favorite?id=' + this.boardId;
+            let url = 'api/board/favorite/' + this.boardId;
             axios.put(url).then((response) => {
                 //お気に入り数のローカルプロパティ更新
                 ++ this.favoriteNum;
@@ -62,7 +62,7 @@ export default {
             )
         },
         deleteFavoriteData() {
-            url = 'api/board/favorite?id=' + this.boardId;
+            let url = 'api/board/favorite/' + this.boardId;
             axios.delete(url).then((response) => {
                 //お気に入り数のローカルプロパティ更新
                 -- this.favoriteNum;

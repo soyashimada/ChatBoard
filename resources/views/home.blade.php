@@ -40,19 +40,23 @@
         </div>
         <hr class="my-4">
     </div>
-    
+
     <!-- 最近作られたボードを表示 -->
     <div class="container list">
         <p style="font-size: 3.0rem">最近作られたボード</p>
-        <div class="list-boards row">
+        <div class="list-boards row" id="app">
             @foreach ($boards as $board)
                 <div class="list-board-margin col-12 col-md-6">
                     <div class="list-board-color">
                         <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}"></a>
                         <div class="list-board-body">
                             <div class="list-board-body-top">
-                                <p class="list-board-title mb-0">{{$board->title}}</p>
-                                <p class="list-board-user">{{ '@'.$board->user->name }}</p>
+                                <div class="list-boad-title mb-0">
+                                    <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}">{{$board->title}}</a>
+                                </div>
+                                <div class="list-board-user">
+                                    <a href="{{ route('profile', ['user' => $board->user->id]) }}">{{ '@'.$board->user->name }}</a>
+                                </div>
 
                                 <!-- 何日前の投稿かを表示 -->
                                 <p class="list-board-day text-muted">
@@ -70,6 +74,9 @@
                                              {{$var}}日前
                                     @endswitch
                                 </p>
+                                <div style="display: inline-block;">
+                                    <favorite-board :favorite_num="{{ $board->getFavoritesCountAttribute() }}" :favorite_status="{{ $board->getFavoritedByUserAttribute() ? 'true' : 'false' }}" :board_id="{{ $board->id }}"></favorite-board>
+                                </div>
 
                             </div>
                             <p class="list-board-subtitle">{{ $board->description }}</p>

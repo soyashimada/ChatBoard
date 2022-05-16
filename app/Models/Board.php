@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,8 +30,6 @@ class Board extends Model
     }
 
     public function getFavoritedByUserAttribute(){
-        return $this->boardFavorites->contains(function ($user) {
-            return $user->id === Auth::user()->id;
-        });
+        return is_null(Auth::user()) ? false : $this->boardFavorites->contains('user_id', Auth::user()->id);
     }
 }

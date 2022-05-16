@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BoardController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,6 +21,10 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::middleware('auth')->group(function(){
+    //いいね機能
+    Route::put('api/board/favorite/{id}', 'BoardFavoriteController@put_favorite');
+    Route::delete('api/board/favorite/{id}', 'BoardFavoriteController@delete_favorite');
+
     //ボード一覧表示
     Route::get('board', 'BoardController@index')->name('board');
 

@@ -129,7 +129,7 @@ header {
     }
 }
 
-.list-board-color{
+.list-board-color, .list-board-color-hover{
     border: 1px solid;
     border-color: #d4d4d4;
     padding: 20px;
@@ -137,13 +137,19 @@ header {
     height: 100%;
 }
 
-.list-board-color:hover{
+.list-board-color-hover:hover{
     opacity: 0.8;
     background-color: #e9ecef;
     transition: background-color 0.4s ease-in-out 0s;
 }
 
-.list-board-link{
+.list-board-link {
+    font-size: 1.3rem;
+    color: rgb(92, 92, 92);
+}
+
+/* ボード全体をリンクにする場合 */
+.list-board-link-over{
     position: absolute;
     top: 0;
     left: 0;
@@ -157,8 +163,7 @@ header {
 }
 
 .list-board-title{
-    font-size: 1.3rem;
-    color: rgb(92, 92, 92);
+
 }
 
 @media (max-width: 575px){
