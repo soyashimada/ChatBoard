@@ -1898,6 +1898,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "FavoriteBoard",
   props: {
@@ -1906,39 +1907,35 @@ __webpack_require__.r(__webpack_exports__);
     board_id: Number
   },
   data: function data() {
-    return {
-      favoriteNum: this.favorite_num,
-      isActive: this.favorite_status,
-      boardId: this.board_id
-    };
+    return {};
   },
   methods: {
     onClickFavorite: function onClickFavorite() {
       //クリックイベント
-      if (this.isActive) {
+      if (this.favorite_status) {
         this.deleteFavoriteData();
       } else {
         this.putFavoriteData();
       }
 
-      this.isActive = !this.isActive;
+      this.favorite_status = !this.favorite_status;
     },
     putFavoriteData: function putFavoriteData() {
       var _this = this;
 
-      var url = 'api/board/favorite/' + this.boardId;
+      var url = 'api/board/favorite/' + this.board_id;
       axios.put(url).then(function (response) {
         //お気に入り数のローカルプロパティ更新
-        ++_this.favoriteNum;
+        ++_this.favorite_num;
       })["catch"]();
     },
     deleteFavoriteData: function deleteFavoriteData() {
       var _this2 = this;
 
-      var url = 'api/board/favorite/' + this.boardId;
+      var url = 'api/board/favorite/' + this.board_id;
       axios["delete"](url).then(function (response) {
         //お気に入り数のローカルプロパティ更新
-        --_this2.favoriteNum;
+        --_this2.favorite_num;
       })["catch"]();
     }
   }
@@ -6668,7 +6665,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.favorite[data-v-35708d4f] {\n    display: flex;\n    align-items: center;\n}\n.fa-heart[data-v-35708d4f] {\n    color: rgb(209, 21, 93);\n    font-size: 20px;\n    cursor: pointer;\n}\n.favorite-num[data-v-35708d4f] {\n    display: inline-block;\n    margin: 0;\n    font-size: 15px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.favorite[data-v-35708d4f] {\n    display: flex;\n    align-items: center;\n}\n.fa-heart[data-v-35708d4f] {\n    color: rgb(209, 21, 93);\n    font-size: 20px;\n    cursor: pointer;\n}\n.favorite-num[data-v-35708d4f] {\n    display: inline-block;\n    margin: 0;\n    font-size: 15px;\n    padding-left: 1px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -48051,11 +48048,14 @@ var render = function() {
   return _c("div", { staticClass: "favorite" }, [
     _c("i", {
       staticClass: "fa-heart",
-      class: { "fa-solid": _vm.isActive, "fa-regular": !_vm.isActive },
+      class: {
+        "fa-solid": _vm.favorite_status,
+        "fa-regular": !_vm.favorite_status
+      },
       on: { click: _vm.onClickFavorite }
     }),
     _vm._v(" "),
-    _c("p", { staticClass: "favorite-num" }, [_vm._v(_vm._s(_vm.favoriteNum))])
+    _c("p", { staticClass: "favorite-num" }, [_vm._v(_vm._s(_vm.favorite_num))])
   ])
 }
 var staticRenderFns = []

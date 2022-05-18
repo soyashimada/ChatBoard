@@ -1,7 +1,7 @@
 <template>
     <div class="favorite">
-        <i class="fa-heart" :class="{'fa-solid': isActive, 'fa-regular': !isActive}" @click="onClickFavorite"></i>
-        <p class="favorite-num" >{{ favoriteNum }}</p>
+        <i class="fa-heart" :class="{'fa-solid': favorite_status, 'fa-regular': !favorite_status}" @click="onClickFavorite"></i>
+        <p class="favorite-num" >{{ favorite_num }}</p>
     </div>
 </template>
 
@@ -22,6 +22,7 @@
         display: inline-block;
         margin: 0;
         font-size: 15px;
+        padding-left: 1px;
     }
 
 </style>
@@ -37,35 +38,32 @@ export default {
     },
     data: function() {
         return {
-            favoriteNum: this.favorite_num,
-            isActive: this.favorite_status,
-            boardId: this.board_id
         }
     },
     methods : {
         onClickFavorite (){
             //クリックイベント
-            if(this.isActive){
+            if(this.favorite_status){
                 this.deleteFavoriteData();
             }else{
                 this.putFavoriteData();
             }
-            this.isActive = !this.isActive;
+            this.favorite_status = !this.favorite_status;
         },
         putFavoriteData() {
-            let url = 'api/board/favorite/' + this.boardId;
+            let url = 'api/board/favorite/' + this.board_id;
             axios.put(url).then((response) => {
                 //お気に入り数のローカルプロパティ更新
-                ++ this.favoriteNum;
+                ++ this.favorite_num;
             }).catch(
                 
             )
         },
         deleteFavoriteData() {
-            let url = 'api/board/favorite/' + this.boardId;
+            let url = 'api/board/favorite/' + this.board_id;
             axios.delete(url).then((response) => {
                 //お気に入り数のローカルプロパティ更新
-                -- this.favoriteNum;
+                -- this.favorite_num;
             }).catch(
 
             )
