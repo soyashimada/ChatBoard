@@ -1,7 +1,7 @@
 <template>
     <div class="favorite">
-        <i class="fa-heart" :class="{'fa-solid': favorite_status, 'fa-regular': !favorite_status}" @click="onClickFavorite"></i>
-        <p class="favorite-num" >{{ favorite_num }}</p>
+        <i class="fa-heart" :class="{'fa-solid': status, 'fa-regular': !status}" @click="onClickFavorite"></i>
+        <p class="favorite-num" >{{ num }}</p>
     </div>
 </template>
 
@@ -14,7 +14,7 @@
 
     .fa-heart {
         color: rgb(209, 21, 93);
-        font-size: 20px;
+        font-size: 18px;
         cursor: pointer;
     }
 
@@ -22,6 +22,7 @@
         display: inline-block;
         margin: 0;
         font-size: 15px;
+        color: rgb(209, 21, 93);
         padding-left: 1px;
     }
 
@@ -38,37 +39,60 @@ export default {
     },
     data: function() {
         return {
+            num: this.favorite_num,
+            status: this.favorite_status,
+            id: this.board_id 
         }
     },
     methods : {
-        onClickFavorite (){
-            //クリックイベント
-            if(this.favorite_status){
-                this.deleteFavoriteData();
-            }else{
-                this.putFavoriteData();
-            }
-            this.favorite_status = !this.favorite_status;
+        async onClickFavorite (){
+            const res = await this.favoriteEvent();
         },
-        putFavoriteData() {
-            let url = 'api/board/favorite/' + this.board_id;
-            axios.put(url).then((response) => {
-                //お気に入り数のローカルプロパティ更新
-                ++ this.favorite_num;
-            }).catch(
-                
-            )
+        async favoriteEvent() {
+            return new Promise((resolve,reject) => {
+                //クリックイベント
+                if(this.status){
+                    this.status = !this.status;
+                    -- this.num;
+                    this.deleteFavoriteData().then(response => {
+                        resolve(response);
+                    }).catch(error => {
+                        this.status = !this.status;
+                        ++ this.num;
+                        reject(error);
+                    })
+                }else{
+                    this.status = !this.status;
+                    ++ this.num;
+                    this.putFavoriteData().then(response => {
+                        resolve(response);
+                    }).catch(error => {
+                        this.status = !this.status;
+                        -- this.num;
+                        reject(error);
+                    });
+                }
+            },3000)
         },
-        deleteFavoriteData() {
-            let url = 'api/board/favorite/' + this.board_id;
-            axios.delete(url).then((response) => {
-                //お気に入り数のローカルプロパティ更新
-                -- this.favorite_num;
-            }).catch(
+        async putFavoriteData() {
+            let url = 'api/board/favorite/' + this.id;
 
-            )
-        }
+            return await axios.put(url).then(response => {
+                return response;
+            }).catch(error => {
+                return error;
+            })
+        },
 
+        async deleteFavoriteData() {
+            let url = 'api/board/favorite/' + this.id;
+
+            return await axios.delete(url).then(response => {
+                return response;
+            }).catch(error => {
+                return error;
+            })
+        },
     }
 }
 
