@@ -48,7 +48,7 @@
             @foreach ($boards as $board)
                 <div class="list-board-margin col-12 col-md-6">
                     <div class="list-board-color">
-                        <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}"></a>
+                        <!-- <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}"></a> -->
                         <div class="list-board-body">
                             <div class="list-board-body-top">
                                 <div class="list-boad-title mb-0">

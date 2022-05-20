@@ -75,7 +75,7 @@ export default {
             },3000)
         },
         async putFavoriteData() {
-            let url = 'api/board/favorite/' + this.id;
+            let url = location.origin + '/api/board/favorite/' + this.id;
 
             return await axios.put(url).then(response => {
                 return response;
@@ -85,7 +85,7 @@ export default {
         },
 
         async deleteFavoriteData() {
-            let url = 'api/board/favorite/' + this.id;
+            let url = location.origin + '/api/board/favorite/' + this.id;
 
             return await axios.delete(url).then(response => {
                 return response;

@@ -14,16 +14,21 @@
     <!-- ログインユーザーが作成したいボードを一覧表示する -->
     <div class="container">
         @if(!($boards->isEmpty()))
-            <div class="list-boards row">
+            <div class="list-boards row" id="app">
                 <p class="system-message">あなたのボード一覧</p>
                 @foreach ($boards as $board)
                     <div class="list-board-margin col-12">
                         <div class="list-board-color">
-                            <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}"></a>
+                            <!-- <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}"></a> -->
                             <div class="list-board-body">
                                 <div class="list-board-body-top">
-                                    <p class="list-board-title mb-0">{{$board->title}}</p>
+                                    <div class="list-boad-title mb-0">
+                                        <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}">{{$board->title}}</a>
+                                    </div>
                                     <p class="list-board-day text-muted">{{$board->created_at->isoFormat('YYYY.M.D(dd)')}}</p>
+                                    <div style="display: inline-block;">
+                                        <favorite-board :favorite_num="{{ $board->getFavoritesCountAttribute() }}" :favorite_status="{{ $board->getFavoritedByUserAttribute() ? 'true' : 'false' }}" :board_id="{{ $board->id }}"></favorite-board>
+                                    </div>
                                 </div>
                                 <p class="list-board-subtitle">{{ $board->description }}</p>
                             </div>

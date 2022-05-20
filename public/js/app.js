@@ -2009,7 +2009,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                url = 'api/board/favorite/' + _this3.id;
+                url = location.origin + '/api/board/favorite/' + _this3.id;
                 _context3.next = 3;
                 return axios.put(url).then(function (response) {
                   return response;
@@ -2037,7 +2037,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                url = 'api/board/favorite/' + _this4.id;
+                url = location.origin + '/api/board/favorite/' + _this4.id;
                 _context4.next = 3;
                 return axios["delete"](url).then(function (response) {
                   return response;
