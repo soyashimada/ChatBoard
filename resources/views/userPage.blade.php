@@ -41,7 +41,7 @@
     </div>
 
     <!-- プロフィールユーザーが最近作成したボードを表示 -->
-    <div class="container">
+    <div class="container" id="app">
         <p style="font-size: 3.0rem">{{ $profiledUser->name}}が最近作成したボード</p>
         @if(!($boards->isEmpty()))
         <div class="list-boards row">
@@ -53,6 +53,9 @@
                             <div class="list-board-body-top">
                                 <p class="list-board-title mb-0">{{$board->title}}</p>
                                 <p class="list-board-day text-muted">{{$board->created_at->isoFormat('YYYY.M.D(dd)')}}</p>
+                                <div style="display: inline-block;">
+                                    <favorite-board :favorite_num="{{ $board->getFavoritesCountAttribute() }}" :favorite_status="{{ $board->getFavoritedByUserAttribute() ? 'true' : 'false' }}" :board_id="{{ $board->id }}"></favorite-board>
+                                </div>
                             </div>
                             <p class="list-board-subtitle">{{ $board->description }}</p>
                         </div>

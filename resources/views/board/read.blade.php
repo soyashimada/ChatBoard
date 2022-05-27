@@ -17,15 +17,13 @@
     </style>
     <div class="read-position" id="app">
         <div class="container read-container">
-            <div class="container-fluid">
-                <div class="container d-flex" style="justify-content: space-between; align-items: flex-start">
-                    <div class="row w-100">
-                        <div class="page-title col-11">
-                            <p class="fw-bold">{{ $board->title }}</p>
-                        </div>
-                        <div class="col-1">
-                            <favorite-board :favorite_num="{{ $board->getFavoritesCountAttribute() }}" :favorite_status="{{ $board->getFavoritedByUserAttribute() ? 'true' : 'false' }}" :board_id="{{ $board->id }}"></favorite-board>
-                        </div>
+            <div class="d-flex justify-content-between">
+                <div class="row w-100">
+                    <div class="page-title col-10">
+                        <p class="fw-bold">{{ $board->title }}</p>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-start">
+                        <favorite-board :favorite_num="{{ $board->getFavoritesCountAttribute() }}" :favorite_status="{{ $board->getFavoritedByUserAttribute() ? 'true' : 'false' }}" :board_id="{{ $board->id }}"></favorite-board>
                     </div>
                 </div>
             </div>
