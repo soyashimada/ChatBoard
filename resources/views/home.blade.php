@@ -47,17 +47,15 @@
         <div class="list-boards row" id="app">
             @foreach ($boards as $board)
                 <div class="list-board-margin col-12 col-md-6">
-                    <div class="list-board-color">
-                        <!-- <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}"></a> -->
+                    <!-- JavaScriptでdiv枠にリンクを持たせるhttps://www.ipentec.com/document/html-css-link-entire-div-frame#section_06 -->
+                    <div class="list-board-color-hover" onclick="DivFrameClick()" href="{{ route('read',['id' => $board->id]) }}">
                         <div class="list-board-body">
                             <div class="list-board-body-top">
-                                <div class="list-boad-title mb-0">
-                                    <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}">{{$board->title}}</a>
-                                </div>
+                                <!-- <a class="list-board-link-over" href="{{ route('read',['id' => $board->id]) }}"></a> -->
+                                <p class="list-boad-title mb-0">{{$board->title}}</p>
                                 <div class="list-board-user">
                                     <a href="{{ route('profile', ['user' => $board->user->id]) }}">{{ '@'.$board->user->name }}</a>
                                 </div>
-
                                 <!-- 何日前の投稿かを表示 -->
                                 <p class="list-board-day text-muted">
                                     @php
@@ -86,6 +84,18 @@
             @endforeach
         </div>
     </div>
+    <style>
+        .fa-heart {
+            z-index: 2;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        function DivFrameClick() {
+            document.location.href = this.href;
+        }
+    </script>
 
     
 @endsection

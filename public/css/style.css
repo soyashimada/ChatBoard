@@ -163,7 +163,7 @@ header {
 }
 
 .list-board-title{
-
+    z-index: 2;
 }
 
 @media (max-width: 575px){
@@ -178,7 +178,13 @@ header {
 }
 
 .list-board-user{
+    pointer-events: auto;
     color: steelblue;
+    z-index: 2;
+}
+
+.list-board-user-link {
+    pointer-events: none;
 }
 
 /* user profile page */
