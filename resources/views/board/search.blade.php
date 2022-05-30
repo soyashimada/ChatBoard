@@ -36,13 +36,10 @@
             @if (!($boards->isEmpty()))
                 @foreach ($boards as $board)
                     <div class="list-board-margin col-12">
-                        <div class="list-board-color">
-                            <!-- <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}"></a> -->
+                        <div class="list-board-color-hover" onclick="divAnchorToRead('{{ $board->id }}');">
                             <div class="list-board-body">
                                 <div class="list-board-body-top">
-                                    <div class="list-boad-title mb-0">
-                                        <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}">{{$board->title}}</a>
-                                    </div>
+                                    <p class="list-board-title-big mb-0">{{$board->title}}</p>
                                     <div class="list-board-user">
                                         <a href="{{ route('profile', ['user' => $board->user->id]) }}">{{ '@'.$board->user->name }}</a>
                                     </div>
@@ -84,6 +81,11 @@
         }
 
     </style>
+    <script type="text/javascript">
+        function divAnchorToRead($id) {
+            window.location.href = "read/" + $id
+        }
+    </script>
 
     
 @endsection

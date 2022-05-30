@@ -48931,7 +48931,12 @@ var render = function() {
     _c("i", {
       staticClass: "fa-heart",
       class: { "fa-solid": _vm.status, "fa-regular": !_vm.status },
-      on: { click: _vm.onClickFavorite }
+      on: {
+        click: function($event) {
+          $event.stopPropagation()
+          return _vm.onClickFavorite.apply(null, arguments)
+        }
+      }
     }),
     _vm._v(" "),
     _c("p", { staticClass: "favorite-num" }, [_vm._v(_vm._s(_vm.num))])

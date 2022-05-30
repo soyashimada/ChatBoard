@@ -47,11 +47,9 @@
         <div class="list-boards row" id="app">
             @foreach ($boards as $board)
                 <div class="list-board-margin col-12 col-md-6">
-                    <!-- JavaScriptでdiv枠にリンクを持たせるhttps://www.ipentec.com/document/html-css-link-entire-div-frame#section_06 -->
-                    <div class="list-board-color-hover" onclick="DivFrameClick()" href="{{ route('read',['id' => $board->id]) }}">
+                    <div class="list-board-color-hover" onclick="divAnchorToRead('{{ $board->id }}');">
                         <div class="list-board-body">
                             <div class="list-board-body-top">
-                                <!-- <a class="list-board-link-over" href="{{ route('read',['id' => $board->id]) }}"></a> -->
                                 <p class="list-boad-title mb-0">{{$board->title}}</p>
                                 <div class="list-board-user">
                                     <a href="{{ route('profile', ['user' => $board->user->id]) }}">{{ '@'.$board->user->name }}</a>
@@ -92,8 +90,8 @@
     </style>
 
     <script type="text/javascript">
-        function DivFrameClick() {
-            document.location.href = this.href;
+        function divAnchorToRead($id) {
+            window.location.href = "board/read/" + $id
         }
     </script>
 

@@ -1,6 +1,6 @@
 <template>
     <div class="favorite">
-        <i class="fa-heart" :class="{'fa-solid': status, 'fa-regular': !status}" @click="onClickFavorite"></i>
+        <i class="fa-heart" :class="{'fa-solid': status, 'fa-regular': !status}" @click.stop="onClickFavorite"></i>
         <p class="favorite-num" >{{ num }}</p>
     </div>
 </template>

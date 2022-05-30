@@ -28,13 +28,11 @@
                 <p class="system-message">あなたのボード一覧</p>
                 @foreach ($boards as $board)
                     <div class="list-board-margin col-12">
-                        <div class="list-board-color">
-                            <!-- <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}"></a> -->
+                        <div class="list-board-color-hover">
                             <div class="list-board-body">
                                 <div class="list-board-body-top">
-                                    <div class="list-boad-title mb-0">
-                                        <a class="list-board-link" href="{{ route('read',['id' => $board->id]) }}">{{$board->title}}</a>
-                                    </div>
+                                    <a class="list-board-link-over" href="{{ route('read',['id' => $board->id]) }}"></a>
+                                    <p class="list-board-title-big mb-0">{{$board->title}}</p>
                                     <p class="list-board-day text-muted">
                                         <?php $var = \Carbon\Carbon::parse($board->created_at)->diffInDays(\Carbon\Carbon::now()) ?>
                                         @switch( $var )
@@ -63,6 +61,11 @@
             <p>ボードが見つかりませんでした</p>
         @endif
     </div>
+    <style>
+        .fa-heart {
+            z-index: 2;
+        }
 
+    </style>
     
 @endsection
