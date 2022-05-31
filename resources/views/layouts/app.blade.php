@@ -20,8 +20,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- CSS参照 -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @if(app('env') == 'production')
+        <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ secure_asset('css/style.css') }}">
+    @else
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @endif
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
