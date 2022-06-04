@@ -1918,13 +1918,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "FavoriteBoard",
   props: {
     favorite_num: Number,
     favorite_status: Boolean,
-    board_id: Number
+    board_id: Number,
+    iconSize: {
+      type: Number,
+      "default": 18
+    },
+    fontSize: {
+      type: Number,
+      "default": 15
+    }
   },
   data: function data() {
     return {
@@ -6783,7 +6790,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.favorite[data-v-35708d4f] {\n    display: flex;\n    align-items: center;\n}\n.fa-heart[data-v-35708d4f] {\n    color: rgb(209, 21, 93);\n    font-size: 18px;\n    cursor: pointer;\n}\n.favorite-num[data-v-35708d4f] {\n    display: inline-block;\n    margin: 0;\n    font-size: 15px;\n    color: rgb(209, 21, 93);\n    padding-left: 1px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.favorite[data-v-35708d4f] {\n    display: flex;\n    align-items: center;\n}\n.fa-heart[data-v-35708d4f] {\n    color: rgb(209, 21, 93);\n    cursor: pointer;\n    z-index: 2;\n}\n.favorite-num[data-v-35708d4f] {\n    display: inline-block;\n    margin: 0;\n    color: rgb(209, 21, 93);\n    padding-left: 1px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -48931,6 +48938,7 @@ var render = function() {
     _c("i", {
       staticClass: "fa-heart",
       class: { "fa-solid": _vm.status, "fa-regular": !_vm.status },
+      style: { "font-size": _vm.iconSize + "px" },
       on: {
         click: function($event) {
           $event.stopPropagation()
@@ -48939,7 +48947,14 @@ var render = function() {
       }
     }),
     _vm._v(" "),
-    _c("p", { staticClass: "favorite-num" }, [_vm._v(_vm._s(_vm.num))])
+    _c(
+      "p",
+      {
+        staticClass: "favorite-num",
+        style: { "font-size": _vm.fontSize + "px" }
+      },
+      [_vm._v(_vm._s(_vm.num))]
+    )
   ])
 }
 var staticRenderFns = []

@@ -67,11 +67,5 @@
             <p class="system-message">このユーザーのボードは見つかりませんでした</p>
         @endif
     </div>
-    <style>
-        .fa-heart {
-            z-index: 2;
-        }
-
-    </style>
     
 @endsection

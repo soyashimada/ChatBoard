@@ -1,7 +1,7 @@
 <template>
     <div class="favorite">
-        <i class="fa-heart" :class="{'fa-solid': status, 'fa-regular': !status}" @click.stop="onClickFavorite"></i>
-        <p class="favorite-num" >{{ num }}</p>
+        <i class="fa-heart" :style="{'font-size': iconSize+'px'}" :class="{'fa-solid': status, 'fa-regular': !status}" @click.stop="onClickFavorite"></i>
+        <p class="favorite-num" :style="{'font-size': fontSize+'px'}">{{ num }}</p>
     </div>
 </template>
 
@@ -14,14 +14,13 @@
 
     .fa-heart {
         color: rgb(209, 21, 93);
-        font-size: 18px;
         cursor: pointer;
+        z-index: 2;
     }
 
     .favorite-num {
         display: inline-block;
         margin: 0;
-        font-size: 15px;
         color: rgb(209, 21, 93);
         padding-left: 1px;
     }
@@ -36,6 +35,15 @@ export default {
         favorite_num: Number,
         favorite_status: Boolean,
         board_id: Number,
+        iconSize: {
+            type: Number,
+            default: 18
+        },
+        fontSize: {
+            type: Number,
+            default: 15
+        }
+
     },
     data: function() {
         return {

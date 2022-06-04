@@ -61,11 +61,5 @@
             <p>ボードが見つかりませんでした</p>
         @endif
     </div>
-    <style>
-        .fa-heart {
-            z-index: 2;
-        }
-
-    </style>
     
 @endsection

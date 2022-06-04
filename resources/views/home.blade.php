@@ -82,12 +82,6 @@
             @endforeach
         </div>
     </div>
-    <style>
-        .fa-heart {
-            z-index: 2;
-        }
-
-    </style>
 
     <script type="text/javascript">
         function divAnchorToRead($id) {

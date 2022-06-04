@@ -59,7 +59,7 @@
                                 </div>
                                 <p class="list-board-subtitle">{{ $board->description }}</p>
                                 <div class="d-flex justify-content-end align-content-end">
-                                    <favorite-board :favorite_num="{{ $board->getFavoritesCountAttribute() }}" :favorite_status="{{ $board->getFavoritedByUserAttribute() ? 'true' : 'false' }}" :board_id="{{ $board->id }}"></favorite-board>
+                                    <favorite-board :favorite_num="{{ $board->getFavoritesCountAttribute() }}" :favorite_status="{{ $board->getFavoritedByUserAttribute() ? 'true' : 'false' }}" :board_id="{{ $board->id }}" :icon-size="34" :font-size="28"></favorite-board>
                                 </div>
                             </div>
                         </div>
@@ -71,16 +71,6 @@
             @endif
         </div>
     @endif
-    <style>
-        .fa-heart {
-            font-size: 34px!important;
-        }
-
-        .favorite-num {
-            font-size: 28px!important;
-        }
-
-    </style>
     <script type="text/javascript">
         function divAnchorToRead($id) {
             window.location.href = "read/" + $id

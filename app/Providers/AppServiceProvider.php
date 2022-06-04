@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
         
         Schema::defaultStringLength(191);
 
+        //for heroku
         if (\App::environment(['production'])) {
             URL::forceScheme('https');
         }
