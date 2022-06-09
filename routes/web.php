@@ -22,8 +22,8 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::middleware('auth')->group(function(){
     //いいね機能
-    Route::put('api/board/favorite/{id}', 'BoardFavoriteController@put_favorite');
-    Route::delete('api/board/favorite/{id}', 'BoardFavoriteController@delete_favorite');
+    Route::put('api/board/favorite/{id}', 'BoardFavoriteController@put_favorite')->where('id','[0-9]+');
+    Route::delete('api/board/favorite/{id}', 'BoardFavoriteController@delete_favorite')->where('id','[0-9]+');
 
     //ボード一覧表示
     Route::get('board', 'BoardController@index')->name('board');
