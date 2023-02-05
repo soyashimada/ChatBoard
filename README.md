@@ -1,6 +1,6 @@
 # ChatBoard
-現在、スキル研鑽のため開発中のチャットアプリです。Herokuで公開中です。  
-https://chat-board-0023.herokuapp.com/
+現在、スキル研鑽のため開発中のチャットアプリです。  
+http://ec2-18-208-155-252.compute-1.amazonaws.com
 
 アカウント登録を飛ばしたければ、下記の入力でログインしてください。
 
