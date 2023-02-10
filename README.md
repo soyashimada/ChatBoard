@@ -1,6 +1,6 @@
 # ChatBoard
 現在開発中のチャットアプリです。  
-http://ec2-18-208-155-252.compute-1.amazonaws.com
+https://chatboardapp.com
 
 アカウント登録を飛ばしたければ、下記の入力でログインしてください。
 
